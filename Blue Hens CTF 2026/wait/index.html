@@ -1,0 +1,596 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/Blue%20Hens%20CTF%202026/wait/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>wait - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wait" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              wait
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分析过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 先排除最直观的登录绕过
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 枚举隐藏路由
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cookie-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 排查 Cookie / Session 伪造
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-timing-attack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 排查 timing attack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 协议层异常：请求体处理值得继续深挖
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键 payload / 命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="wait">wait</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Web</li>
+<li>题目状态：阶段性分析</li>
+<li>目标：https://bluehens-wait.chals.io/</li>
+<li>核心疑点：<code>openresty</code> 反向代理到 <code>Werkzeug/Flask</code>，存在协议层和请求体处理上的异常行为，但目前还没有拿到最终 flag</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre><code class="language-text">暂未获取
+</code></pre>
+<h2 id="_2">入口与现象</h2>
+<p>题目入口很薄，首页只有一个跳转到登录页的按钮：</p>
+<pre><code class="language-text">GET /
+GET /login
+</code></pre>
+<p>页面文案如下：</p>
+<ul>
+<li><code>Chronos Systems — Employee Portal</code></li>
+<li><code>Access Verification</code></li>
+<li>提示输入 <code>staff access code</code></li>
+</ul>
+<p>先做基础枚举后，能确认的路由只有 4 个：</p>
+<pre><code class="language-text">GET  /          -&gt; 首页
+GET  /login     -&gt; 登录页
+POST /login     -&gt; 校验 access code
+GET  /dashboard -&gt; 未登录时 302 到 /login
+GET  /healthz   -&gt; 返回 {&quot;status&quot;:&quot;ok&quot;}
+</code></pre>
+<p>服务栈也比较清晰：</p>
+<ul>
+<li><code>80/tcp</code> 上是 <code>openresty/1.27.1.2</code>，只负责 301 到 HTTPS</li>
+<li><code>443/tcp</code> 实际页面返回头是 <code>Werkzeug/3.1.8 Python/3.12.13</code></li>
+<li>页面不带 JS，也没有 <code>robots.txt</code>、公开 API、源码下载点、调试面板等额外入口</li>
+</ul>
+<h2 id="_3">分析过程</h2>
+<h3 id="1">1. 先排除最直观的登录绕过</h3>
+<p>对 <code>POST /login</code> 做了常见弱口令、时间主题单词、页面文案、日期字符串、大小写变体、JSON 体、多值参数、缺字段等测试，回包始终一致：</p>
+<pre><code class="language-text">200 OK
+Invalid access code.
+</code></pre>
+<p>这一轮至少能说明：</p>
+<ul>
+<li>不是简单弱口令</li>
+<li>不是 <code>password</code> 参数名大小写、数组参数、多值参数这类低级解析问题</li>
+<li>也不像是把题目描述里的 <code>wait</code>、<code>patience</code>、<code>chronos</code> 之类直接当作 access code</li>
+</ul>
+<h3 id="2">2. 枚举隐藏路由</h3>
+<p>常见敏感路径、Flask 调试路径、OpenAPI 路径、备份文件、静态资源穿越都测过了，只有 <code>/healthz</code> 命中：</p>
+<pre><code class="language-text">GET /healthz
+-&gt; 200 application/json
+-&gt; {&quot;status&quot;:&quot;ok&quot;}
+</code></pre>
+<p>其余如 <code>/source</code>、<code>/__debugger__</code>、<code>/console</code>、<code>/openapi.json</code>、<code>/backup.zip</code>、<code>/config.py</code> 等都返回标准 404。</p>
+<h3 id="3-cookie-session">3. 排查 Cookie / Session 伪造</h3>
+<p><code>/dashboard</code> 未登录时返回：</p>
+<pre><code class="language-text">302 Location: /login
+Vary: Cookie
+</code></pre>
+<p>这说明后端大概率会读 Cookie 或 Session，但普通访问和错误登录都不会下发任何 <code>Set-Cookie</code>。我分别测试了：</p>
+<ul>
+<li>常见明文 Cookie 名和值，如 <code>session=1</code>、<code>auth=true</code>、<code>logged_in=1</code></li>
+<li>一批常见 Flask 弱 <code>secret_key</code></li>
+<li>一批常见 Session 字段，如 <code>logged_in</code>、<code>authenticated</code>、<code>access_granted</code>、<code>is_admin</code></li>
+</ul>
+<p>目前都没有打到非 302 的响应，因此还不能把它定性成“弱签名 Flask Session”。</p>
+<h3 id="4-timing-attack">4. 排查 timing attack</h3>
+<p>题名叫 <code>wait</code>，最容易先怀疑逐字符比较的时间侧信道。但把请求固定到单个后端 IP，并改成原始 TLS 直接发包后，<code>POST /login</code> 的响应时间基本稳定在 <code>0.3s ~ 0.5s</code>，不同 payload 之间没有稳定差异。</p>
+<p>结论：</p>
+<ul>
+<li>之前通过高层 HTTP 客户端看到的秒级抖动，主要是网络/连接层噪声</li>
+<li>目前没有足够证据支持“access code 逐字符 sleep 比较”这个利用方向</li>
+</ul>
+<h3 id="5">5. 协议层异常：请求体处理值得继续深挖</h3>
+<p>虽然 timing 分支基本排除了，但在手工发 HTTPS 原始请求时，还是发现了一个值得记下的异常点：</p>
+<ul>
+<li>站点前面是 <code>openresty</code></li>
+<li>后面是真正处理业务的 <code>Werkzeug</code></li>
+<li>对 <code>POST /login</code> 人为构造异常 <code>Content-Length</code> 时，前后端在“什么时候把请求体视为结束”这件事上表现得不够直观</li>
+</ul>
+<p>测试思路大致如下：</p>
+<pre><code class="language-text">POST /login HTTP/1.1
+Host: bluehens-wait.chals.io
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 50
+
+password=x
+</code></pre>
+<p>然后继续在同一连接里补第二段数据，站点会把后续字节吞进第一次请求体，最后还是回 <code>Invalid access code.</code>。这个现象本身还不足以直接出 flag，但它说明：</p>
+<ul>
+<li>这题很可能不是单纯的表单弱口令题</li>
+<li>更像是想让人从代理层和后端解析差异入手</li>
+<li>如果后续有官方附件、源码，或者能结合 Burp 的 Repeater/Smuggler 做更细的 pause-based desync 测试，这里很可能就是突破口</li>
+</ul>
+<h2 id="_4">利用过程</h2>
+<p>当前还没有形成可复现的最终利用链，因此这里只保留已经确认的步骤：</p>
+<ol>
+<li>访问首页与登录页，确认页面极简，没有前端脚本和显式隐藏入口。</li>
+<li>枚举常见路径，只发现 <code>/healthz</code> 会返回 <code>{"status":"ok"}</code>。</li>
+<li>对 <code>/login</code> 做常规参数形态测试，回显始终是 <code>Invalid access code.</code>。</li>
+<li>对 <code>/dashboard</code> 做 Cookie、伪造 Session、弱密钥等测试，始终被 302 回 <code>/login</code>。</li>
+<li>将请求固定到单个后端 IP 后复测响应时间，排除稳定的 timing side channel。</li>
+<li>用原始 TLS 请求观察异常 <code>Content-Length</code> 场景，确认题目仍然存在进一步做协议层研究的价值。</li>
+</ol>
+<h2 id="payload">关键 payload / 命令</h2>
+<pre><code class="language-python">import socket
+import ssl
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+ip = &quot;143.244.222.115&quot;
+body = &quot;password=x&quot;
+req = (
+    &quot;POST /login HTTP/1.1\r\n&quot;
+    &quot;Host: bluehens-wait.chals.io\r\n&quot;
+    &quot;Content-Type: application/x-www-form-urlencoded\r\n&quot;
+    &quot;Content-Length: 50\r\n&quot;
+    &quot;\r\n&quot;
+    + body
+).encode()
+
+s = socket.create_connection((ip, 443), timeout=10)
+ss = ctx.wrap_socket(s, server_hostname=&quot;bluehens-wait.chals.io&quot;)
+ss.sendall(req)
+</code></pre>
+<p>以及基础枚举：</p>
+<pre><code class="language-text">GET /
+GET /login
+GET /dashboard
+GET /healthz
+POST /login
+</code></pre>
+<h2 id="_5">总结</h2>
+<p>这题目前最可靠的结论不是“拿到了什么”，而是“哪些方向已经被排除”：</p>
+<ul>
+<li>不是薄弱字典口令</li>
+<li>不是明显的 Cookie/Session 明文伪造</li>
+<li>不是稳定可利用的 timing attack</li>
+</ul>
+<p>现阶段最像正解突破口的，仍然是 <code>openresty -&gt; Werkzeug</code> 这层组合在异常请求体、连接复用、pause-based desync 方向上的协议差异。如果后续补到附件或继续用更底层的 HTTP 请求走读，这篇分析可以直接接着往下写。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
