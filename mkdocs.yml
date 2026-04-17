@@ -1,0 +1,7 @@
+site_name: My Docs
+site_url: https://你的域名/docs/
+theme:
+  name: material
+
+nav:
+  - 首页: index.md
