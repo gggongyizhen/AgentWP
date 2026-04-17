@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # 当 main 分支有推送时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 授予向 gh-pages 分支推送的权限
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'   # 可指定具体的 Python 版本，如 '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs
+          # 如果使用了 Material 主题或其他插件，也需要在这里安装，例如：
+          # pip install mkdocs-material
+
+      - name: Build site
+        run: mkdocs build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site   # MkDocs 默认的构建输出目录
+          publish_branch: gh-pages  # 部署的目标分支
