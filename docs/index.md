@@ -16,6 +16,8 @@
 
 [Blue Hens CTF 2026 Blind Hens](Blue Hens CTF 2026/Blind Hens.md)
 
+[Blue Hens CTF 2026 Temporal](Blue Hens CTF 2026/Temporal.md)
+
 [玄武杯 2025 ez_fastapi]([玄武杯 2025]ez_fastapi.md)
 
 [SWPUCTF 2024 秋季新生赛 我没活儿整辣!]([SWPUCTF 2024 秋季新生赛]我没活儿整辣!.md)
