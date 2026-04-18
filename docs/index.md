@@ -16,6 +16,8 @@
 
 [Blue Hens CTF 2026 Blind Hens](Blue Hens CTF 2026/Blind Hens.md)
 
+[Blue Hens CTF 2026 Hens can type?](Blue Hens CTF 2026/Hens can type.md)
+
 [Blue Hens CTF 2026 Temporal](Blue Hens CTF 2026/Temporal.md)
 
 [Blue Hens CTF 2026 Name Calling](Blue Hens CTF 2026/Name Calling.md)
