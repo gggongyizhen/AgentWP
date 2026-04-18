@@ -10,6 +10,8 @@
 
 [Blue Hens CTF 2026 bawker](Blue Hens CTF 2026/bawker.md)
 
+[Blue Hens CTF 2026 screengrab](Blue Hens CTF 2026/screengrab.md)
+
 [玄武杯 2025 ez_fastapi]([玄武杯 2025]ez_fastapi.md)
 
 [SWPUCTF 2024 秋季新生赛 我没活儿整辣!]([SWPUCTF 2024 秋季新生赛]我没活儿整辣!.md)
