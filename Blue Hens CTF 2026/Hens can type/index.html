@@ -1,0 +1,586 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/Blue%20Hens%20CTF%202026/Hens%20can%20type/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Hens can type? - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hens-can-type" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hens can type?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分析过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pcapng-usbmon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 先把 pcapng 当成 usbmon 解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 锁定真正的键盘设备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-hid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 按 HID 键盘表恢复完整输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键 payload / 命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hens-can-type">Hens can type?</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Forensics</li>
+<li>题目状态：已解出</li>
+<li>题目附件：<code>challenge1.pcapng</code></li>
+<li>题目描述：</li>
+</ul>
+<pre><code class="language-text">UD SOC team recovered a USB traffic capture from a suspicious machine on campus.
+
+Investigators believe a user typed something important… Can you reconstruct what was typed?
+
+Take a closer look you might find what was left behind.
+</code></pre>
+<ul>
+<li>核心突破点：附件是 Linux <code>usbmon</code> 抓到的 USB 流量，真正有用的是 <code>device 11 / endpoint 0x81</code> 的 8 字节 HID 键盘报告；按“修饰键 + 最多 6 个 keycode”的标准格式解码后，可以直接还原出用户输入内容</li>
+</ul>
+<h2 id="_2">入口与现象</h2>
+<p>题目只给了一份 <code>challenge1.pcapng</code>，描述里明确说是 “USB traffic capture”，方向基本已经缩到 USB 取证。</p>
+<p>先把包按 <code>usbmon</code> 头结构拆开，可以看到抓包里主要有几组中断传输：</p>
+<ul>
+<li><code>device 3 / endpoint 0x81</code></li>
+<li><code>device 3 / endpoint 0x82</code></li>
+<li><code>device 11 / endpoint 0x81</code></li>
+</ul>
+<p>其中 <code>device 11 / endpoint 0x81</code> 的数据区非常像标准键盘 HID 报告，例如：</p>
+<pre><code class="language-text">0200180000000000
+0200070000000000
+0200060000000000
+0200170000000000
+</code></pre>
+<p>这种 8 字节格式正好符合常见键盘输入报告：</p>
+<ul>
+<li>第 1 字节：modifier（Shift、Ctrl、Alt 等）</li>
+<li>第 2 字节：保留</li>
+<li>第 3 到 8 字节：最多 6 个同时按下的 keycode</li>
+</ul>
+<p>相比之下，<code>device 3 / endpoint 0x81</code> 的数据看起来更像别的 HID 设备，<code>device 3 / endpoint 0x82</code> 也只有极少量状态变化，所以真正该跟的是 <code>device 11</code>。</p>
+<h2 id="_3">分析过程</h2>
+<h3 id="1-pcapng-usbmon">1. 先把 <code>pcapng</code> 当成 <code>usbmon</code> 解析</h3>
+<p>这份流量不是 Windows 下常见的 USBPcap，而是 Linux <code>usbmon</code> 链路层。用 <code>usbmon</code> 的二进制头结构解析后，能稳定拿到：</p>
+<ul>
+<li>传输类型</li>
+<li>设备号</li>
+<li>端点号</li>
+<li>抓到的数据长度</li>
+<li>实际 HID 数据区</li>
+</ul>
+<p>关键头结构大小是 <code>64</code> 字节，后面跟着 <code>len_cap</code> 长度的数据区。对这题来说，只需要关注：</p>
+<ul>
+<li><code>type == 'C'</code> 的完成包</li>
+<li><code>xfer_type == 1</code> 的中断传输</li>
+<li><code>len_cap == 8</code> 的 HID 报告</li>
+</ul>
+<h3 id="2">2. 锁定真正的键盘设备</h3>
+<p>把不同设备的数据模式简单统计一下，很容易发现 <code>device 11 / endpoint 0x81</code> 最像键盘：</p>
+<ul>
+<li>大量数据都长这样：<code>02 00 xx 00 00 00 00 00</code></li>
+<li>有不少全零报告，说明是按键释放</li>
+<li>第一字节经常是 <code>0x02</code>，正好对应左 Shift</li>
+<li>第三字节是很小的 HID keycode，例如 <code>0x18</code>、<code>0x07</code>、<code>0x06</code></li>
+</ul>
+<p>例如：</p>
+<pre><code class="language-text">0200180000000000 -&gt; Shift + keycode 0x18 -&gt; U
+0200070000000000 -&gt; Shift + keycode 0x07 -&gt; D
+0200060000000000 -&gt; Shift + keycode 0x06 -&gt; C
+0200170000000000 -&gt; Shift + keycode 0x17 -&gt; T
+0200090000000000 -&gt; Shift + keycode 0x09 -&gt; F
+02002f0000000000 -&gt; Shift + keycode 0x2f -&gt; {
+</code></pre>
+<p>看到这里其实已经很明显了，用户输入的内容就是一个 <code>UDCTF{...}</code> 风格的 flag。</p>
+<h3 id="3-hid">3. 按 HID 键盘表恢复完整输入</h3>
+<p>剩下就是把每个报告里的新按下按键按顺序翻译出来：</p>
+<ul>
+<li>普通状态用普通键盘映射表</li>
+<li><code>modifier</code> 带 <code>Shift</code> 时切到大写/符号映射表</li>
+<li>遇到全零报告就视为按键释放</li>
+<li>只记录相对上一帧“新出现”的 keycode，避免长按重复计数</li>
+</ul>
+<p>按这个规则解码后，完整输入为：</p>
+<pre><code class="language-text">UDCTF{k3y_StR0K3E_1S_7he_wAy}
+</code></pre>
+<p>这里有个容易自作主张改错的点：中间这一段是 <code>K3E</code>，看起来很多人会想当然改成 <code>K3S</code>。但从流量看，这里对应的真实按键分别是：</p>
+<pre><code class="language-text">02000e0000000000 -&gt; K
+0000200000000000 -&gt; 3
+0200080000000000 -&gt; E
+</code></pre>
+<p>也就是说抓包里确实是按下了 <code>e</code> 对应的 keycode <code>0x08</code>，不是 <code>s</code> 对应的 <code>0x16</code>。同时整段输入过程中也没有出现退格，所以这里应该忠实保留为题目里实际输入的内容。</p>
+<h2 id="_4">利用过程</h2>
+<ol>
+<li>用 <code>usbmon</code> 的 64 字节头结构解析 <code>challenge1.pcapng</code>。</li>
+<li>只保留 <code>C</code> 型完成包里的中断传输。</li>
+<li>观察不同设备的数据形态，锁定 <code>device 11 / endpoint 0x81</code> 为键盘。</li>
+<li>按标准 USB HID 键盘格式解释 8 字节报告。</li>
+<li>处理 Shift 和按键释放，只记录新按下的 keycode。</li>
+<li>按时间顺序拼接出最终输入内容。</li>
+</ol>
+<h2 id="payload">关键 payload / 命令</h2>
+<p>下面这段 Python 可以直接复现整个恢复过程：</p>
+<pre><code class="language-python">import struct
+from scapy.utils import RawPcapNgReader
+
+fmt = &quot;&lt;QBBBBHBBqiiII8siiII&quot;
+
+normal = {
+    4:'a',5:'b',6:'c',7:'d',8:'e',9:'f',10:'g',11:'h',12:'i',13:'j',
+    14:'k',15:'l',16:'m',17:'n',18:'o',19:'p',20:'q',21:'r',22:'s',23:'t',
+    24:'u',25:'v',26:'w',27:'x',28:'y',29:'z',30:'1',31:'2',32:'3',33:'4',
+    34:'5',35:'6',36:'7',37:'8',38:'9',39:'0',40:'[ENTER]',41:'[ESC]',
+    42:'[BS]',43:'[TAB]',44:' ',45:'-',46:'=',47:'[',48:']',49:'\\',
+    51:';',52:\&quot;'\&quot;,53:'`',54:',',55:'.',56:'/'
+}
+
+shift = {
+    4:'A',5:'B',6:'C',7:'D',8:'E',9:'F',10:'G',11:'H',12:'I',13:'J',
+    14:'K',15:'L',16:'M',17:'N',18:'O',19:'P',20:'Q',21:'R',22:'S',23:'T',
+    24:'U',25:'V',26:'W',27:'X',28:'Y',29:'Z',30:'!',31:'@',32:'#',33:'$',
+    34:'%',35:'^',36:'&amp;',37:'*',38:'(',39:')',40:'[ENTER]',41:'[ESC]',
+    42:'[BS]',43:'[TAB]',44:' ',45:'_',46:'+',47:'{',48:'}',49:'|',
+    51:':',52:'\&quot;',53:'~',54:'&lt;',55:'&gt;',56:'?'
+}
+
+prev = set()
+out = []
+
+for pkt, _ in RawPcapNgReader(&quot;challenge1.pcapng&quot;):
+    header = struct.unpack(fmt, pkt[:64])
+    _, pkt_type, xfer_type, ep, dev, _, _, _, _, _, _, _, len_cap, _, _, _, _, _ = header
+
+    if not (pkt_type == ord('C') and xfer_type == 1 and dev == 11 and ep == 0x81 and len_cap == 8):
+        continue
+
+    report = list(pkt[64:72])
+    mods = report[0]
+    keys = [k for k in report[2:] if k]
+    curr = set(keys)
+    new_keys = [k for k in keys if k not in prev]
+
+    for key in new_keys:
+        table = shift if (mods &amp; 0x22 or mods &amp; 0x02 or mods &amp; 0x20) else normal
+        out.append(table.get(key, f&quot;[0x{key:02x}]&quot;))
+
+    prev = curr
+
+print(&quot;&quot;.join(out))
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-text">UDCTF{k3y_StR0K3E_1S_7he_wAy}
+</code></pre>
+<h2 id="flag">Flag</h2>
+<pre><code class="language-text">UDCTF{k3y_StR0K3E_1S_7he_wAy}
+</code></pre>
+<h2 id="_5">总结</h2>
+<p>这题本质上就是一道 USB 键盘取证题，难点不在 HID 表本身，而在于先分清抓包格式和设备角色。只要识别出这是 <code>usbmon</code>，再从多台 HID 设备里筛出真正的键盘，后面的恢复链路就很短：找到 8 字节报告、处理 Shift、去掉长按重复，最后按时间顺序拼接即可。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
