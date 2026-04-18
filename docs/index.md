@@ -2,6 +2,8 @@
 
 [Blue Hens CTF 2026 Magic Link 1](Blue Hens CTF 2026/Magic Link 1.md)
 
+[Blue Hens CTF 2026 Magic Link 2](Blue Hens CTF 2026/Magic Link 2.md)
+
 [Blue Hens CTF 2026 wait](Blue Hens CTF 2026/wait.md)
 
 [玄武杯 2025 ez_fastapi]([玄武杯 2025]ez_fastapi.md)
