@@ -1,0 +1,537 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/Blue%20Hens%20CTF%202026/Looking%20Down/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Looking Down - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#looking-down" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Looking Down
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分析过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1qazs3edc-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 第一段 1qazs3edc 对应 H
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-456rfvbngh-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 第二段 456rfvbngh 对应 E
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-7ujmil0p-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第三段 7ujmil0p;/ 对应 N
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 合并得到最终答案
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键 payload / 命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="looking-down">Looking Down</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Misc</li>
+<li>题目状态：已解出</li>
+<li>题目描述：</li>
+</ul>
+<pre><code class="language-text">1qazs3edc 456rfvbngh 7ujmil0p;/
+</code></pre>
+<ul>
+<li>核心突破点：把 QWERTY 键盘当成画布，从“俯视”的角度看每一段字符在键盘上的占位形状</li>
+</ul>
+<h2 id="_2">入口与现象</h2>
+<p>这题没有给出复杂附件，核心材料就是题名 <code>Looking Down</code> 和一串很明显带有键盘分布特征的字符：</p>
+<pre><code class="language-text">1qazs3edc 456rfvbngh 7ujmil0p;/
+</code></pre>
+<p>有两个异常点非常明显：</p>
+<ol>
+<li>字符全部落在标准 QWERTY 键盘的相邻区域上。</li>
+<li>题名叫 <code>Looking Down</code>，很像在提示“从上往下看键盘布局”，而不是做常规编码转换。</li>
+</ol>
+<p>所以这题的方向不是凯撒、维吉尼亚之类的文本编码，而是键盘图形题。</p>
+<h2 id="_3">分析过程</h2>
+<h3 id="1-1qazs3edc-h">1. 第一段 <code>1qazs3edc</code> 对应 <code>H</code></h3>
+<p>把它放回键盘坐标里看：</p>
+<pre><code class="language-text">1 . 3
+q . e
+a s d
+z . c
+</code></pre>
+<p>这一段在键盘上正好画出了一个大写 <code>H</code>：</p>
+<ul>
+<li><code>1 q a z</code> 是左竖线</li>
+<li><code>s d</code> 是中间横杠</li>
+<li><code>3 e d c</code> 是右竖线</li>
+</ul>
+<p>所以第一段解出字母 <code>H</code>。</p>
+<h3 id="2-456rfvbngh-e">2. 第二段 <code>456rfvbngh</code> 对应 <code>E</code></h3>
+<p>同样把它画回键盘：</p>
+<pre><code class="language-text">4 5 6
+r . .
+f g h
+v b n
+</code></pre>
+<p>这一段正好是一个大写 <code>E</code>：</p>
+<ul>
+<li><code>4 5 6</code> 是上横</li>
+<li><code>r f v</code> 是左竖</li>
+<li><code>f g h</code> 是中横</li>
+<li><code>v b n</code> 是下横</li>
+</ul>
+<p>所以第二段是 <code>E</code>。</p>
+<h3 id="3-7ujmil0p-n">3. 第三段 <code>7ujmil0p;/</code> 对应 <code>N</code></h3>
+<p>继续还原：</p>
+<pre><code class="language-text">7 . . 0
+u . i p
+j . l ;
+m . . /
+</code></pre>
+<p>可以看成一个大写 <code>N</code>：</p>
+<ul>
+<li><code>7 u j m</code> 是左竖</li>
+<li><code>0 p ; /</code> 是右竖</li>
+<li><code>i l</code> 提供了中间那条斜线</li>
+</ul>
+<p>所以第三段是 <code>N</code>。</p>
+<h3 id="4">4. 合并得到最终答案</h3>
+<p>三段连起来就是：</p>
+<pre><code class="language-text">H E N
+</code></pre>
+<p>也就是：</p>
+<pre><code class="language-text">HEN
+</code></pre>
+<p>这和比赛名 <code>Blue Hens</code> 本身也能形成呼应，说明推理是闭合的。</p>
+<h2 id="_4">利用过程</h2>
+<ol>
+<li>观察到题面字符完全贴合 QWERTY 键盘分布。</li>
+<li>根据题名 <code>Looking Down</code>，把“向下看键盘”视为核心提示。</li>
+<li>以空格为分隔，把字符串拆成 3 段，分别还原成键盘上的占位图形。</li>
+<li>依次识别出字母 <code>H</code>、<code>E</code>、<code>N</code>。</li>
+<li>合并得到最终答案 <code>HEN</code>。</li>
+</ol>
+<h2 id="payload">关键 payload / 命令</h2>
+<p>题目本身不需要 payload，关键在于把字符串重新投影到键盘上：</p>
+<pre><code class="language-text">1qazs3edc  -&gt; H
+456rfvbngh -&gt; E
+7ujmil0p;/ -&gt; N
+</code></pre>
+<h2 id="flag">Flag</h2>
+<pre><code class="language-text">HEN
+</code></pre>
+<p>说明：当前本地只保留了题名和题面字符串，没有比赛平台的挑战页面截图，因此这里记录的是题目还原出的最终答案 <code>HEN</code>。如果平台要求使用标准包裹格式，再按当场规则提交即可。</p>
+<h2 id="_5">总结</h2>
+<p>这题本质上是一个键盘字形题。题名已经把方向说得很直白了：不要把字符当作普通密文，而要把 QWERTY 键盘当成网格，从俯视角度去看每一段覆盖出来的图形。三段分别画出 <code>H</code>、<code>E</code>、<code>N</code>，最终答案就是 <code>HEN</code>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
