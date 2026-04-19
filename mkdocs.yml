@@ -2,6 +2,10 @@ site_name: My Docs
 site_url: https://gggongyizhen.github.io/AgentWP/
 theme:
   name: material
+hooks:
+  - mkdocs_hooks.py
+watch:
+  - image
 
 nav:
   - 首页: index.md
