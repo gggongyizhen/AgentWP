@@ -1,0 +1,617 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/others/%5BMoeCTF%202022%5DEquationPy/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>[MoeCTF 2022]EquationPy - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#moectf-2022equationpy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [MoeCTF 2022]EquationPy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-pyc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 逆向和 pyc 逆向是怎么一回事
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与初看
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把字节码还原成方程组
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键证据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="moectf-2022equationpy">[MoeCTF 2022]EquationPy</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Reverse</li>
+<li>题目状态：已解出</li>
+<li>附件：<code>EquationPy-38.pyc</code></li>
+<li>核心点：<code>pyc</code> 不是机器码，而是 Python 字节码；把字节码反汇编后，可以直接还原出一组线性方程</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre><code class="language-text">moectf{z3_i5_he1pful!}
+</code></pre>
+<h2 id="python-pyc">Python 逆向和 pyc 逆向是怎么一回事</h2>
+<p>这题本身就在问这两个问题，所以先把概念说清楚。</p>
+<p>Python 逆向和 C/C++ 逆向不一样。<code>exe</code>、<code>elf</code> 那类文件面对的是机器指令；<code>pyc</code> 面对的是 Python 虚拟机字节码。也就是说，<code>pyc</code> 仍然保留了大量高级语言层面的信息，比如：</p>
+<ul>
+<li>常量表 <code>co_consts</code></li>
+<li>名字表 <code>co_names</code></li>
+<li>代码对象 <code>code object</code></li>
+<li>一条条可读的字节码指令</li>
+</ul>
+<p>所以 <code>pyc</code> 逆向的核心思路通常不是“硬啃汇编”，而是：</p>
+<ol>
+<li>先确认它是哪一代 Python 的字节码</li>
+<li>取出 <code>marshal</code> 序列化后的 <code>code object</code></li>
+<li>用 <code>dis</code> 反汇编</li>
+<li>看是否能直接恢复源码逻辑；如果不能，就按字节码语义手工还原</li>
+</ol>
+<p>这道题就是一个很标准的例子。</p>
+<h2 id="_2">入口与初看</h2>
+<p>题目附件只有一个 <code>EquationPy-38.pyc</code>。文件名里的 <code>38</code> 已经很像 Python 3.8 的提示；我本地是 Python 3.10，再看文件头也能确认它不是当前解释器版本生成的：</p>
+<pre><code class="language-text">550d0d0a00000000d5e5d762c42c0000
+</code></pre>
+<p>我先没有去找网上反编译器，也没有参考现成 WP，而是直接用 Python 自带能力把它拆开：</p>
+<pre><code class="language-python">import marshal
+import dis
+
+with open(&quot;EquationPy-38.pyc&quot;, &quot;rb&quot;) as f:
+    f.read(16)          # 跳过 pyc 头
+    code = marshal.load(f)
+
+print(code)
+print(code.co_names)
+print(code.co_consts[:10])
+dis.dis(code)
+</code></pre>
+<p>这里最关键的一步是 <code>marshal.load(f)</code>。<code>pyc</code> 的主体其实就是序列化后的 <code>code object</code>，拿到它之后，后面就完全进入 Python 自己的世界了。</p>
+<h2 id="_3">分析过程</h2>
+<p>反汇编后，很快能看到程序整体结构：</p>
+<ol>
+<li>先打印两句提示</li>
+<li>读入 <code>flag</code></li>
+<li>判断 <code>len(flag) == 22</code></li>
+<li>连续做很多次 <code>ord(flag[i]) * 常数</code> 的加法</li>
+<li>把每一组和一个常数比较</li>
+<li>全部满足才输出成功</li>
+</ol>
+<p>开头一段字节码已经很明显：</p>
+<pre><code class="language-text">LOAD_NAME                1 (input)
+LOAD_CONST               2 ('Input your flag:')
+CALL_FUNCTION            1
+STORE_NAME               2 (flag)
+LOAD_NAME                3 (len)
+LOAD_NAME                2 (flag)
+CALL_FUNCTION            1
+LOAD_CONST               3 (22)
+COMPARE_OP               2 (==)
+POP_JUMP_IF_FALSE     ...
+</code></pre>
+<p>后面就是大量重复结构，例如第一组校验：</p>
+<pre><code class="language-text">ord(flag[0]) * 7072 +
+ord(flag[1]) * 2523 +
+ord(flag[2]) * 6714 +
+...
+ord(flag[21]) * 57
+== 10743134
+</code></pre>
+<p>这已经不是“猜字符串”问题，而是一个标准线性方程组问题。22 个字符就是 22 个未知数，程序一共给了 22 条方程，刚好可以直接求。</p>
+<h2 id="_4">把字节码还原成方程组</h2>
+<p>我没有手抄 22 组系数，而是直接对反汇编指令做了一次很轻量的符号执行，只处理这题真正用到的几种操作：</p>
+<ul>
+<li><code>LOAD_CONST</code></li>
+<li><code>LOAD_NAME</code></li>
+<li><code>BINARY_SUBSCR</code></li>
+<li><code>CALL_FUNCTION</code></li>
+<li><code>BINARY_MULTIPLY</code></li>
+<li><code>BINARY_ADD</code></li>
+<li><code>COMPARE_OP</code></li>
+</ul>
+<p>核心思路是把 <code>ord(flag[i])</code> 记成第 <code>i</code> 个未知数，然后一路把表达式堆栈还原出来。</p>
+<p>下面这段脚本就足够把矩阵和最终答案抽出来：</p>
+<pre><code class="language-python">import marshal
+import dis
+from sympy import Matrix
+
+with open(&quot;EquationPy-38.pyc&quot;, &quot;rb&quot;) as f:
+    f.read(16)
+    code = marshal.load(f)
+
+ins = list(dis.get_instructions(code))
+stack = []
+eqs = []
+started = False
+
+for insn in ins:
+    op = insn.opname
+    arg = insn.argval
+
+    if op == &quot;LOAD_NAME&quot;:
+        stack.append((&quot;name&quot;, arg))
+    elif op == &quot;LOAD_CONST&quot;:
+        stack.append((&quot;const&quot;, arg))
+    elif op == &quot;CALL_FUNCTION&quot;:
+        argc = insn.arg
+        args = [stack.pop() for _ in range(argc)][::-1]
+        func = stack.pop()
+        if func == (&quot;name&quot;, &quot;ord&quot;):
+            idx = args[0][2][1]
+            stack.append((&quot;var&quot;, idx))
+            started = True
+        elif func == (&quot;name&quot;, &quot;len&quot;):
+            stack.append((&quot;len&quot;,))
+        else:
+            stack.append((&quot;call&quot;, func, args))
+    elif op == &quot;POP_TOP&quot;:
+        stack.pop()
+    elif op == &quot;STORE_NAME&quot;:
+        stack.pop()
+    elif op == &quot;BINARY_SUBSCR&quot;:
+        idx = stack.pop()
+        obj = stack.pop()
+        stack.append((&quot;sub&quot;, obj, idx))
+    elif op == &quot;BINARY_MULTIPLY&quot;:
+        b = stack.pop()
+        a = stack.pop()
+        stack.append((&quot;mul&quot;, a, b))
+    elif op == &quot;BINARY_ADD&quot;:
+        b = stack.pop()
+        a = stack.pop()
+        stack.append((&quot;add&quot;, a, b))
+    elif op == &quot;COMPARE_OP&quot;:
+        b = stack.pop()
+        a = stack.pop()
+        stack.append((&quot;cmp&quot;, insn.argval, a, b))
+    elif op == &quot;POP_JUMP_IF_FALSE&quot;:
+        cond = stack.pop()
+        if cond[0] == &quot;cmp&quot; and cond[1] == &quot;==&quot; and started:
+            eqs.append(cond)
+
+def linear(expr):
+    tag = expr[0]
+    if tag == &quot;const&quot;:
+        return {}, expr[1]
+    if tag == &quot;var&quot;:
+        return {expr[1]: 1}, 0
+    if tag == &quot;mul&quot;:
+        a, b = expr[1], expr[2]
+        if a[0] == &quot;const&quot;:
+            coeffs, bias = linear(b)
+            k = a[1]
+        else:
+            coeffs, bias = linear(a)
+            k = b[1]
+        return {i: v * k for i, v in coeffs.items()}, bias * k
+    if tag == &quot;add&quot;:
+        c1, b1 = linear(expr[1])
+        c2, b2 = linear(expr[2])
+        for i, v in c2.items():
+            c1[i] = c1.get(i, 0) + v
+        return c1, b1 + b2
+    raise ValueError(expr)
+
+rows = []
+rhs = []
+for _, _, left, right in eqs:
+    coeffs, _ = linear(left)
+    rows.append([coeffs.get(i, 0) for i in range(22)])
+    rhs.append(right[1])
+
+M = Matrix(rows)
+B = Matrix(rhs)
+sol = [int(x) for x in M.LUsolve(B)]
+flag = &quot;&quot;.join(map(chr, sol))
+
+print(flag)
+print(all(sum(rows[r][i] * sol[i] for i in range(22)) == rhs[r] for r in range(22)))
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-text">moectf{z3_i5_he1pful!}
+True
+</code></pre>
+<p>这里 <code>True</code> 表示 22 条方程全部验证通过，不是误撞出来的字符串。</p>
+<h2 id="_5">关键证据</h2>
+<ul>
+<li><code>len(flag) == 22</code> 直接给出了未知数字符数量</li>
+<li>字节码中只有 <code>print</code>、<code>input</code>、<code>len</code>、<code>ord</code> 这些名字，没有更复杂的加密逻辑</li>
+<li>主体校验全都是 <code>ord(flag[i]) * 系数</code> 的线性组合，没有分支混淆，也没有位运算</li>
+<li>一共抽出 22 条方程，矩阵满秩，可以唯一解出</li>
+</ul>
+<p>我本地最后验证到的关键信息如下：</p>
+<pre><code class="language-text">header= 550d0d0a00000000d5e5d762c42c0000
+equations= 22
+flag= moectf{z3_i5_he1pful!}
+all_ascii= True
+verify= True
+</code></pre>
+<h2 id="_6">总结</h2>
+<p>这题本质上不是在考 Python 黑魔法，而是在考你会不会把 <code>pyc</code> 当作“可读的字节码程序”来看。</p>
+<p>真正有效的路线只有两步：</p>
+<ol>
+<li>用 <code>marshal + dis</code> 把 <code>pyc</code> 还原成可分析的字节码逻辑</li>
+<li>识别出它实际上是在检查一个 22 元一次方程组，然后直接求解</li>
+</ol>
+<p>所以“pyc 文件怎么逆向”这个问题，放到这题里的答案就是：先拿回 <code>code object</code>，再站在 Python 虚拟机指令层去理解它，而不是把它想得和本地机器码逆向一样重。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
