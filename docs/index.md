@@ -11,3 +11,5 @@
 [散题](others/散题.md)
 
 [NSSRound#3 Team path_by_path](others/[NSSRound#3 Team]path_by_path.md)
+
+[MoeCTF 2022 EquationPy](others/[MoeCTF 2022]EquationPy.md)
