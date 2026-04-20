@@ -1,0 +1,528 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/CTF%40CIT%202026/Wiretap/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Wiretap - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wiretap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wiretap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分析过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bell-103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 识别 Bell 103 调制解调器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 从响应里提取网页正文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-svg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 还原 SVG 像素图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键脚本 / 命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="wiretap">Wiretap</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Forensics</li>
+<li>题目状态：已解出</li>
+<li>附件：<code>beep_beep_boop.wav</code></li>
+<li>核心思路：先从音频里识别出电话拨号音、回铃音和 Bell 103 调制解调器信号，再把 300 baud 的 FSK 数据解成 HTTP 响应，最后从网页里的三段 SVG 像素图读出 flag</li>
+</ul>
+<h2 id="_2">入口与现象</h2>
+<p>附件只有一个 wav：</p>
+<pre><code class="language-text">beep_beep_boop.wav
+mono / 44100 Hz / 16-bit PCM / 237.79 s
+</code></pre>
+<p>先看频谱，能明显看到这不是普通录音，而是一段非常“规整”的电话音频：</p>
+<p><img alt="Wiretap 频谱图" src="../../image/Wiretap/spectrogram.png" /></p>
+<p>前几秒能分出三段很典型的电话系统音：</p>
+<ol>
+<li><code>350 Hz + 440 Hz</code>，这是北美电话拨号音。</li>
+<li>中间夹着一串 DTMF 按键音。</li>
+<li>后面变成 <code>440 Hz + 480 Hz</code> 的回铃音，节奏也是标准的“响 2 秒，停 4 秒”。</li>
+</ol>
+<p>这一步已经把方向缩得很小了：题目不是单纯的音频隐写，而是在模拟一通拨号上网的电话连接。</p>
+<h2 id="_3">分析过程</h2>
+<h3 id="1-bell-103">1. 识别 Bell 103 调制解调器</h3>
+<p>回铃音之后，主频变成了两组很像电话调制解调器的 FSK 频率：</p>
+<ul>
+<li><code>1070 / 1270 Hz</code></li>
+<li><code>2025 / 2225 Hz</code></li>
+</ul>
+<p>这正好对应 <strong>Bell 103</strong> 的两路信道。Bell 103 是早期 300 baud 全双工 modem，常见频率组合就是：</p>
+<ul>
+<li>Originate：<code>1070 / 1270 Hz</code></li>
+<li>Answer：<code>2025 / 2225 Hz</code></li>
+</ul>
+<p>音频采样率是 <code>44100 Hz</code>，而 <code>44100 / 300 = 147</code>，刚好每个符号正好是 147 个采样点，所以直接按 300 baud 做非相干 FSK 判决就可以。</p>
+<p>我只先解高频那一路 <code>2025 / 2225 Hz</code>，按每 147 个采样比较两个频点能量，再按 UART <code>8N1</code> 组帧，立刻能还原出一段很像网页返回包的数据：</p>
+<pre><code class="language-text">HTTP/1.0 200 OK
+Server: Apache/1.3.6 (Unix)
+Content-Type: text/html
+Content-Length: 6519
+Connection: close
+</code></pre>
+<p>也就是说，这段 wav 里藏着一整个拨号上网拿网页的过程。</p>
+<h3 id="2">2. 从响应里提取网页正文</h3>
+<p>把解出的 HTTP body 单独拿出来之后，可以看到是一个非常 90 年代风格的网页，标题是：</p>
+<pre><code class="language-html">&lt;title&gt;Dave's Corner of the 'Net!&lt;/title&gt;
+</code></pre>
+<p>正文里最关键的一段是：</p>
+<pre><code class="language-html">Anyway while I was flippin thru the owner's manual ... there was this dorky little
+pixel-art graphic printed at the bottom ... It was split across 3 lil scanlines.
+</code></pre>
+<p>下面还真的嵌了 3 段 SVG 像素图。到这里题目就很明确了：前面的 modem 解码只是为了把网页内容捞出来，真正的 flag 在这三段像素图里。</p>
+<h3 id="3-svg">3. 还原 SVG 像素图</h3>
+<p>把网页里的三个 SVG 逐个解析成像素矩阵，再上下拼起来，图案如下：</p>
+<p><img alt="Wiretap 像素图" src="../../image/Wiretap/manual_combined.png" /></p>
+<p>这三行分别是：</p>
+<pre><code class="language-text">CIT{g3t_off_t
+h3_ph0n3_im_0n
+_th3_intern3t}
+</code></pre>
+<p>直接拼起来就是最终 flag。</p>
+<h2 id="_4">关键脚本 / 命令</h2>
+<p>下面这段脚本就是我实际用来还原 Bell 103 高频信道的核心逻辑：每 147 个采样做一次判决，比较 <code>2025 Hz</code> 和 <code>2225 Hz</code> 能量，再按 <code>8N1</code> 取字节。</p>
+<pre><code class="language-python">import wave, numpy as np
+
+with wave.open(&quot;beep_beep_boop.wav&quot;, &quot;rb&quot;) as w:
+    fr = w.getframerate()
+    data = np.frombuffer(w.readframes(w.getnframes()), dtype=&quot;&lt;i2&quot;).astype(np.float32)
+
+start, end = 8.5, 237.2
+x = data[int(start * fr):int(end * fr)]
+spb = 147  # 44100 / 300
+offset = 145
+
+def tone_power(seg, fq):
+    t = np.arange(len(seg))
+    ang = 2 * np.pi * fq * t / fr
+    c = np.dot(seg, np.cos(ang))
+    s = np.dot(seg, np.sin(ang))
+    return c * c + s * s
+
+bits = []
+for i in range(offset, len(x) - spb + 1, spb):
+    seg = x[i:i + spb]
+    bits.append(1 if tone_power(seg, 2225) &gt; tone_power(seg, 2025) else 0)
+
+out = []
+i = 0
+while i + 10 &lt;= len(bits):
+    if bits[i] != 0:
+        i += 1
+        continue
+    datab = bits[i + 1:i + 9]
+    if bits[i + 9] != 1:
+        i += 1
+        continue
+    out.append(sum(b &lt;&lt; k for k, b in enumerate(datab)))
+    i += 10
+
+print(bytes(out)[:200].decode(&quot;latin1&quot;, &quot;replace&quot;))
+</code></pre>
+<p>运行后就能看到 <code>HTTP/1.0 200 OK</code> 那段响应头。</p>
+<h2 id="flag">Flag</h2>
+<pre><code class="language-text">CIT{g3t_off_th3_ph0n3_im_0n_th3_intern3t}
+</code></pre>
+<h2 id="_5">总结</h2>
+<p>这题最关键的不是“听”出什么，而是先从电话音的频率特征把协议识别出来。前半段的拨号音、DTMF 和回铃音负责告诉你“这是电话网”，后半段的 <code>1070/1270/2025/2225</code> 则把范围进一步锁到 Bell 103。把 modem 数据解出来之后，拿到的是一个网页响应，而网页里那三段 SVG 像素图才是最终藏 flag 的位置。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

