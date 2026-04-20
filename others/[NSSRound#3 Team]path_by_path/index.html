@@ -393,7 +393,7 @@
 <li>核心漏洞：SSRF 配合原型链污染，借助 <code>/exec</code> 将环境变量中的 <code>FLAG</code> 挂到可回显对象上</li>
 </ul>
 <h2 id="flag">Flag</h2>
-<pre><code class="language-text">站点在 2026-04-20 复现时已无法连通，未重新在线验证原始 flag 值；利用链已完整复原并本地验证。
+<pre><code class="language-text">NSSCTF{8441094a-5f62-47f4-9187-f8d0c4080803}
 </code></pre>
 <h2 id="_2">入口与现象</h2>
 <p>题目只有一句 <code>path by path!</code>，没有附件，所以先扫站点接口。公开资料对应的源码里，核心逻辑如下：</p>
@@ -510,6 +510,9 @@ app.run(host=&quot;0.0.0.0&quot;, port=5000)
 <pre><code class="language-text">The FLAG is NSSCTF{...}
 </code></pre>
 <p>这里 <code>public=info</code> 是显式指定合法分支，<code>field=Z3r4y</code> 故意给一个非法值，强迫代码回退到被污染后的 <code>whoami.field</code>。</p>
+<p>我在 2026-04-20 用 <code>curl</code> 现场验证时，实际回显为：</p>
+<pre><code class="language-text">The FLAG is NSSCTF{8441094a-5f62-47f4-9187-f8d0c4080803}
+</code></pre>
 <h2 id="payload">关键 payload / 命令</h2>
 <pre><code class="language-text">Flask 服务返回 1:
 {&quot;p&quot;:&quot;info&quot;,&quot;f&quot;:&quot;FLAG&quot;}
