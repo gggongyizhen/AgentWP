@@ -1,13 +1,11 @@
 这里是首页~
 
-[CTF@CIT 2026](CTF@CIT 2026/index.md)
+下面是一些比赛
 
-[Blue Hens CTF 2026](Blue Hens CTF 2026/index.md)
+[CTF@CIT 2026](CTF@CIT 2026/CTF@CIT 2026.md)
 
-[玄武杯 2025 ez_fastapi]([玄武杯 2025]ez_fastapi.md)
+[Blue Hens CTF 2026](Blue Hens CTF 2026/Blue Hens CTF 2026.md)
 
-[SWPUCTF 2024 秋季新生赛 我没活儿整辣!]([SWPUCTF 2024 秋季新生赛]我没活儿整辣!.md)
+下面是一些散题
 
-[安洵杯 2019 不是文件上传]([安洵杯 2019]不是文件上传.md)
-
-[myblog](myblog.md)
+[散题](others/散题.md)
